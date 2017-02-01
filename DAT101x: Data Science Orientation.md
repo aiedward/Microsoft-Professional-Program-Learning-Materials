@@ -23,3 +23,6 @@ What Excel can bring us for statistical analysis:
   1. Option -> Add-in -> Analysis ToolPack + VBA Pack
   2. Data -> Analysis -> Data Analysis -> Descriptive Statistics/Correlation/t-Test/ANOVA(Analysis of variance)/Regression
   3. Formula: Z.TEST(array, x, [sigma])
+
+<hr/>
+Check out [THIS LINK](https://github.com/MicrosoftLearning/Data-Science-Orientation/raw/master/Data%20Science%20101%20Statistics%20Overview.pdf) for more insights of statistics
