@@ -20,7 +20,7 @@ Learning Material Hub for Microsoft Professional Program (MPP)
 ## Table of Content
 
 ### [DAT101x: Data Science Orientation](https://github.com/yang0339/Microsoft-Professional-Program-Learning-Materials/blob/master/DAT101x:%20Data%20Science%20Orientation.md)
-### [DAT201x: Querying with Transact-SQL]()
+### [DAT201x: Querying with Transact-SQL](https://github.com/yang0339/Microsoft-Professional-Program-Learning-Materials/blob/master/DAT201x:%20Querying%20with%20Transact-SQL.md)
 ### [DAT206x: Analyzing and Visualizing Data with Excel]()
 ### [DS101X: Statistical Thinking for Data Science and Analytics]()
 ### [DAT208x: Introduction to Python for Data Science]() <br/>and [DAT204x: Introduction to R for Data Science]()
