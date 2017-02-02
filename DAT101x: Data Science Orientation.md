@@ -33,7 +33,7 @@ A **main effect** occurs when the effect of one treatment on the outcome variabl
 
 ANOVA is an **omnibus** test statistic, meaning that the result will tell if there is at least one significant mean difference, but it will not tell you where it is. To identify which groups are statistically different, you will need to run a post hoc analysis. There are several different types of post hoc analyses that can be performed. The most common are **Bonferroni, Fisher’s Least Squared Differences, and Tukey**. Regardless of the method selected, they all control for the possibility of capitalizing on chance when multiple t-tests are performed as described in the next section.
 
-The outcome of this analysis is a **f-statistic**. Unlike the t-statistic distribution, which is normally distributed, however, the f-statistic distribution right skewed.
+The outcome of this analysis is a **f-statistic**. Unlike the t-statistic distribution, which is normally distributed, however, the f-statistic distribution right skewed.<br/>
 ![ALT TEXT](http://www.statisticshowto.com/wp-content/uploads/2013/09/f-table.jpg)
 
 <hr/>
