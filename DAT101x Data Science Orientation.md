@@ -24,6 +24,20 @@ What Excel can bring us for statistical analysis:
   2. Data -> Analysis -> Data Analysis -> Descriptive Statistics/Correlation/t-Test/ANOVA(Analysis of variance)/Regression
   3. Formula: Z.TEST(array, x, [sigma])
   
+#### Kurtosis & Skewness
+Two other measures provide additional information about the shape of the distribution and how closely it approximates a normal distribution:
+- Kurtosis is a measure of peakedness. Is the distribution tall and narrow, or is it short and flat?
+- Skewness is a measure of the symmetry of the data. The skewness value indicates the direction of the tail. If it is positive, the distribution is right skewed; if negative, the distribution is left skewed. A normal distribution has a skew of 0.
+
+#### Measures of Association: Correlation
+Correlations measure the strength of the relationship, or association, between two variables. One common misinterpretation is that correlations imply causation, but they do not. Correlations are **not tied to causation**.
+
+![Corr Formula](http://www.stat.yale.edu/Courses/1997-98/101/cor.gif)
+
+How to Interpret a Correlation Coefficient: <br>
+The closer the absolute value is to 1, the stronger the linear relationship. The closer to 0, the weaker the relationship. Because we almost always mean a **Pearson correlation**, which is measure of **linear association**, a correlation near 0 doesn’t necessarily mean that there is no relationship; it only means that the relationship is not linear (it could be curvilinear or logarithmic, for example).
+
+  
 #### SOME ANOVA FACTS
 Analysis of variance (ANOVA) is used to simultaneously test for differences between the means of two or more independent groups (many sources state that the minimum is three, but it can be used with two although it should be noted that this is technically a t-test). In the case of ANOVA, group membership is the “treatment” condition (also known as the “independent variable”) and is a categorical variable. The outcome of interest (known as the “dependent variable” because the result ‘depends’ on group membership) must be a continuous variable.
 
