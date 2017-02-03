@@ -113,7 +113,7 @@ Use UNION to combine the rowsets returned by mulitple queries.
 ### 05 | Using Functions and Aggregating Data
 
 Lecture Notes:
-![ALT TEXT](https://github.com/yang0339/Microsoft-Professional-Program-Learning-Materials/blob/master/Using%20Functions%20and%20Aggregating%20Data.jpg)
+![Using Functions and Aggregation Data](https://github.com/yang0339/Microsoft-Professional-Program-Learning-Materials/blob/master/DAT201x%20Querying%20with%20Transact-SQL%20screenshots/Using%20Functions%20and%20Aggregating%20Data.jpg)
 
 Sample SQLs: Build In Functions<br>
 
@@ -177,7 +177,7 @@ HAVING SUM(sod.OrderQty) > 50<br>
 ## Section 3
 ### 06 | Using Subqueries and APPLY
 
-![ALT TEXT](https://github.com/yang0339/Microsoft-Professional-Program-Learning-Materials/blob/master/Subqueries%20and%20APPLY.jpg)
+![Using Subqueries and APPLY](https://github.com/yang0339/Microsoft-Professional-Program-Learning-Materials/blob/master/DAT201x%20Querying%20with%20Transact-SQL%20screenshots/Subqueries%20and%20APPLY.jpg)
 
 Example:<br>
 
@@ -199,7 +199,7 @@ WHERE orderDate = <br>
 
 
 ### 07 | Using Table Expressions
-![ALT TEXT](https://github.com/yang0339/Microsoft-Professional-Program-Learning-Materials/blob/master/VIEW%2C%20and%20table%20Expressions.jpg)
+![Using Table Expressions](https://github.com/yang0339/Microsoft-Professional-Program-Learning-Materials/blob/master/DAT201x%20Querying%20with%20Transact-SQL%20screenshots/VIEW%2C%20and%20table%20Expressions.jpg)
 
 --Table Expression<br>
 
