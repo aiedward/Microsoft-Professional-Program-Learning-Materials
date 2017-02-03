@@ -48,13 +48,28 @@ Save and Load (To)<br>
 - SUMX/COUNTX/AVERAGEX(Table, Expression)<br>
 - Pivot Table Right Panel (right click) -> Add Measure -> "=CALCULATE(Expression, Filter1, Filter2...)<br>
   Example: =CALCULATE([Revenue], ALL([CountryName]) -> this is for given a grand total which could be used for percentage calculation in subsequent step.
+
+More on DAX:
+
+DAX includes many functions that return a table rather than a value. The table is not displayed, but is used to provide input to other functions. For example, you can retrieve a table and then count the distinct values in it, or calculate dynamic sums across filtered tables or columns.
+DAX includes a variety of time intelligence functions. These functions let you define or select date ranges, and perform dynamic calculations based on them. For example, you can compare sums across parallel periods.
  
 ## Module 6
 * Find out how to use advanced text query to import data from a formatted Excel report. Perform querie beyond the standard user interface.
 
+- Home -> Use 1st row as headers
+- Transform -> Fill -> Fill up/down
+- Transform -> Pivot/Unpivot
+
 ## Module 7
 * Explore ways to create stunning visualizations in Excel. Use the cube functions to perform year-over-year comparisons.
+
+Slicer connect to multiple charts:
+Options -> Report Connections
+Pivot Table Tools -> Analyze -> OLAP Tools -> Convert to Formulas
 
 ## Module 8
 * Create timelines, hierarchies, and slicers to enhance your visualizations. Learn how Excel can work together with Power BI.
 * Upload an Excel workbook to the Power BI service. Explore the use of Excel on the mobile platform. 
+
+
