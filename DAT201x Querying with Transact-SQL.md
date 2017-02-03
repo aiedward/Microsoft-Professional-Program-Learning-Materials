@@ -121,7 +121,7 @@ Sample SQLs: Build In Functions<br>
 --YEAR, DATENAME(mm/dw, XX), DAY, DATEDIFF, GETDATE()<br>
 --UPPER, CONCAT, LEFT, SUBSTRING, CHARINDEX, REVERSE<br>
 
---Logical
+--Logical<br>
 SELECT Name, Size AS NumericSize FROM SalesLT.Product<br>
 WHERE ISNUMERIC(Size)=1<br>
 
@@ -176,8 +176,105 @@ HAVING SUM(sod.OrderQty) > 50<br>
 
 ## Section 3
 ### 06 | Using Subqueries and APPLY
+
+![ALT TEXT](https://github.com/yang0339/Microsoft-Professional-Program-Learning-Materials/blob/master/Subqueries%20and%20APPLY.jpg)
+
+Example:<br>
+
+--Subqueries<br>
+SELECT * FROM SalesLT.Product<br>
+WHERE ListPrice > <br>
+	(SELECT MAX(UnitPrice) FROM SalesLT.SalesOrderDetail)<br>
+
+
+SELECT CustomerID , SalesOrderID, OrderDate<br>
+FROM SalesLT.SalesOrderHeader As SO1<br>
+WHERE orderDate = <br>
+	(SELECT MAX(orderDate)<br>
+	FROM SalesLT.SalesOrderHeader AS SO2<br>
+	WHERE SO1.CustomerID = SO2.CustomerID)<br>
+	ORDER BY CustomerID<br>
+
+--Apply<br>
+
+
 ### 07 | Using Table Expressions
+![ALT TEXT](https://github.com/yang0339/Microsoft-Professional-Program-Learning-Materials/blob/master/VIEW%2C%20and%20table%20Expressions.jpg)
+
+--Table Expression<br>
+
+--Query VIEWS<br>
+CREATE VIEW SalesLT.vCustomerAddress<br>
+AS<br>
+SELECT C.CustomerID, FirstName, LastName, AddressLine1, City, stateProvice<br>
+FROM <br>
+SalesLT.Customer C JOIN SalesLT.Customer.Address CA<br>
+ON C.CustomerID = CA.CustomerID<br>
+JOIN<br>
+SalesLT.Address A<br>
+ON CA.AddressID = A.AddressID<br>
+
+--Temporary Tables<br>
+CREATE TABLE #Colors<br>
+(Color varchar(15))<br>
+
+INSERT INTO #Colors<br>
+SELECT DISTINCT Color FROM SalesLT.Product<br>
+
+SELECT * FROM #Colors<br>
+
+--Table variable<br>
+DECLARE @Colors As TABLE (Color varchar(15))<br>
+<br>
+INSERT INTO @Colors<br>
+SELECT DISTINCT Color FROM SalesLT.Product<br>
+SELECT * FROM @Colors<br>
+<br>
+--TABLE_VALUED FUNCTIONS (TVF)<br>
+CREATE FUNCTION SalesLT.udfCustomersByCity<br>
+(@City AS varchar(20))<br>
+RETURN TABLE<br>
+AS<br>
+RETURN<br>
+(SELECT C.CustomerID, FirstName, LastName, AddressLine1, City, StateProvice<br>
+FROM <br>
+SalesLT.Customer AS C JOIN SalesLT.Customer.Address AS CA<br>
+ON C.CustomerID = CA.CustomerID<br>
+JOIN SalesLT.Address A ON CA.AddressID = A.AddressID<br>
+WHERE City = @CITY)<br>
+
+SELECT * FROM SalesLT.udfCustomersByCity('Bellevue')<br>
+
+
+--Derived Tables<br>
+SELECT Category, COUNT(ProductID) AS Products<br>
+FROM<br>
+	(SELECT p.ProductID, p.Name AS Product, c.Name AS Category<br>
+	FROM SalesLT.Product AS p<br>
+	JOIN SalesLT.ProductCategory AS c<br>
+	ON p.ProductCategoryID = c.ProductCategoryID) AS ProdCats<br>
+GROUP BY Category<br>
+ORDER BY Category<br>
+
+--Common Table Expressions (CTEs)<br>
+WITH ProductByCategory (ProductID, ProductName, Category)<br>
+AS<br>
+(<br>
+	SELECT p.ProductID, p.Name, c.Name AS Category<br>
+	FROM SalesLT.Product AS p<br>
+	JOIN SalesLT.ProductCategory As c<br>
+	ON p.ProductCategoryID = c.ProductCategoryID<br>
+)<br>
+SELECT Category, COUNT(ProductID) AS Products<br>
+FROM ProductByCategory<br>
+GROUP BY Category<br>
+ORDER BY Category<br>
+
+
 ### 08 | Grouping Sets and Pivoting Data
+
+
+
 ## Section 4
 ### 09 | Modifying Data
 ### 10 | Programming with Transact-SQL
