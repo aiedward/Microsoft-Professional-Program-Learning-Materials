@@ -27,19 +27,19 @@ and they can be used in PivotTable.
 ## Module 3
 * Learn about queries (Power Query add-in in Excel 2013 and Excel 2010), and build an Excel data model from a single flat table.
 
-Acess csv file: Data -> New Query -> From Files -> From csv
-Pre=processing functionality: Split Column / (right click) Replace Values / 
-Save and Load (To)
+Acess csv file: Data -> New Query -> From Files -> From csv<br>
+Pre=processing functionality: Split Column / (right click) Replace Values <br>
+Save and Load (To)<br>
 
 ## Module 4
 * Learn how to import multiple tables from a SQL database, and create an Excel data model from the imported data.
 * Create a mash-up between data from text-files and data from a SQL database.
 
-More on **Pre-processing**:
-Add Column -> Merge Column
-Filters (↓ menu) -> Equal/Between/Larger...
-Create a *Date Table*: Design -> Date Table
-Home -> Append Query
+More on **Pre-processing**:<br>
+Add Column -> Merge Column<br>
+Filters (↓ menu) -> Equal/Between/Larger...<br>
+Create a *Date Table*: Design -> Date Table<br>
+Home -> Append Query<br>
 
 
 ## Module 5
