@@ -5,12 +5,12 @@
 
 ### Data Model
 
-Data -> Manage Data Model
-Power Pivot -> Manage
+- Data -> Manage Data Model<br>
+- Power Pivot -> Manage<br>
 
-Check Tables' relationship: Diagram View
-Using Data Model in Pivot Table: Pivot Table -> use this workbook's Data Model
-Create a slicer
+- Check Tables' relationship: Diagram View<br>
+- Using Data Model in Pivot Table: Pivot Table -> use this workbook's Data Model<br>
+- Create a slicer<br>
 
 ## Module 2 
 * Explore an Excel data model. Create your first DAX expressions for calculated columns and measures.
@@ -20,8 +20,8 @@ what is DAX - Data Analysis Expressions (DAX) is a collection of functions, oper
 Where to use DAX: as [**calculated columns/rows**](http://www.excel-easy.com/examples/images/structured-references/formula-copied.png) and as [**measures**](https://support.content.office.net/en-us/media/fa025fa9-1921-427d-b273-6c9395743135.png).
 
 Create a DAX 
-- an example: Revenue:=[OrderQuantity]***[ListPrice] // *calculated column* 
-- second example: TotalRevenue:=sum(InternalSales[Revenue]) // *measure* as revenue (also a DAX created previously) in InternalSales table
+- an example: Revenue:=[OrderQuantity]***[ListPrice] // *calculated column* <br>
+- second example: TotalRevenue:=sum(InternalSales[Revenue]) // *measure* as revenue (also a DAX created previously) in InternalSales table<br>
 and they can be used in PivotTable.
 
 ## Module 3
@@ -35,17 +35,17 @@ Save and Load (To)<br>
 * Learn how to import multiple tables from a SQL database, and create an Excel data model from the imported data.
 * Create a mash-up between data from text-files and data from a SQL database.
 
-More on **Pre-processing**:<br>
-Add Column -> Merge Column<br>
-Filters (↓ menu) -> Equal/Between/Larger...<br>
-Create a *Date Table*: Design -> Date Table<br>
-Home -> Append Query<br>
+- More on **Pre-processing**:<br>
+- Add Column -> Merge Column<br>
+- Filters (↓ menu) -> Equal/Between/Larger...<br>
+- Create a *Date Table*: Design -> Date Table<br>
+- Home -> Append Query<br>
 
 
 ## Module 5
 * Get the details on how to create measures to calculate for each cell, filter context for calculation, and explore several advanced DAX functions.
 
-- SUMX/COUNTX/AVERAGEX(Table, Expression)
+- SUMX/COUNTX/AVERAGEX(Table, Expression)<br>
 - Pivot Table Right Panel (right click) -> Add Measure -> "=CALCULATE(Expression, Filter1, Filter2...)<br>
   Example: =CALCULATE([Revenue], ALL([CountryName]) -> this is for given a grand total which could be used for percentage calculation in subsequent step.
  
