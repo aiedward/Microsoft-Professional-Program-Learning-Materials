@@ -64,9 +64,9 @@ DAX includes a variety of time intelligence functions. These functions let you d
 ## Module 7
 * Explore ways to create stunning visualizations in Excel. Use the cube functions to perform year-over-year comparisons.
 
-Slicer connect to multiple charts:
-Options -> Report Connections
-Pivot Table Tools -> Analyze -> OLAP Tools -> Convert to Formulas
+Slicer connect to multiple charts:<br>
+Options -> Report Connections<br>
+Pivot Table Tools -> Analyze -> OLAP Tools -> Convert to Formulas<br>
 
 ## Module 8
 * Create timelines, hierarchies, and slicers to enhance your visualizations. Learn how Excel can work together with Power BI.
