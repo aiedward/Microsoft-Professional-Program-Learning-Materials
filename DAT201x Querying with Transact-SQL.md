@@ -273,9 +273,162 @@ ORDER BY Category<br>
 
 ### 08 | Grouping Sets and Pivoting Data
 
+![Grouping Sets and Pivoting Data](https://github.com/yang0339/Microsoft-Professional-Program-Learning-Materials/blob/master/DAT201x%20Querying%20with%20Transact-SQL%20screenshots/Grouping%20and%20Pivoting.jpg)
+
+Example:<br>
+
+--Grouping Set<br>
+SELECT cat.ParentProductCategoryName, cat.ProductcategoryName, count(prd.productID) AS Products<br>
+FROM SalesLT.vGetAllCategories AS cat<br>
+LEFT JOIN SalesLT.Product AS prd<br>
+ON prd.ProductCategoryID = cat.ProductCategoryID<br>
+GROUP BY cat.ParentProductCategoryName, cat.ProductCategoryName<br>
+--Group BY GROUPING SETS(cat.ParentProductCategoryName, cat.ProductCategoryName,())<br>
+--Group BY ROLLUP(cat.ParentProductCategoryName, cat.ProductCategoryName)<br>
+--Group BY CUBE(cat.ParentProductCategoryName, cat.ProductCategoryName)<br>
+ORDER BY cat.ParentProductCategoryName, cat.ProductCategoryName<br>
+<br>
+--Pivoting Data<br>
+SELECT * FROM <br>
+(SELECT P.ProductID, PC.Name, ISNULL(P.Color, 'Uncolored') AS Color<br>
+FROM SalesLT.ProductCategory AS PC<br>
+JOIN SalesLT.Product AS P<br>
+ON PC.ProductCategoryID = P.ProductCategoryID<br>
+) AS PPC<br>
+PIVOT(Count(ProductID) FOR Color IN([Red],[Blue],[Black],[Silver],[Yellow],[Grey],[Multi],[Uncolored])) AS pvt<br>
+ORDER BY Name<br>
 
 
 ## Section 4
+
 ### 09 | Modifying Data
+
+![Modifying Data](https://github.com/yang0339/Microsoft-Professional-Program-Learning-Materials/blob/master/DAT201x%20Querying%20with%20Transact-SQL%20screenshots/Modifying%20data.jpg)
+
+--Insert data<br>
+CREATE TABLE SalesLT.CallLog<br>
+(<br>
+	CallID int IDENTITY PRIMARY KEY NOT NULL,<br>
+	CallTime datetime NOT NULL Default GETDATE(),<br>
+	SalesPerson nvarchar(256) NOT NULL,<br>
+	CustomerID int NOT NULL REFERENCES SalesLT.Customer(CustomerID),<br>
+	PhoneNumber nvarchar(25) NOT NULL,<br>
+	Notes nvarchar(max) NULL<br>
+);<br>
+GO<br>
+<br>
+INSERT INTO SalesLT.CallLog<br>
+VALUES<br>
+('2016-01-01T12:30:00','adventure-works\pamela0',1,'245-555-0173','returning call to me')<br>
+<br>
+SELECT * FROM SalesLT.CallLog<br>
+<br>
+INSERT INTO SalesLT.CallLog<br>
+VALUES<br>
+(DEFAULT, 'adventure\davd8',2,'170-555-0217',NULL)\<br>
+<br>
+INSERT INTO SalesLT.CallLog (SalesPerson, CustomerID, PhoneNumber)<br>
+VALUES
+('adventure-works\jilian0',3,'279-555-0130')<br>
+
+INSERT INTO SalesLT.CallLog (SalesPerson, CustomerID, PhoneNumber, Notes)<br>
+SELECT SalesPerson, CustomerID, Phone, 'Sales promotion call'<br>
+FROM SalesLT.Customer<br>
+WHERE companyName = 'Big-Time Bike Store'<br>
+
+INSERT INTO SalesLT.CallLog (SalesPerson, CustomerID, PhoneNumber)<br>
+VALUES<br>
+('adventure-works\jose1',10,'150-555-0127')<br>
+<br>
+SELECT SCOPE_IDENTITY()<br>
+<br>
+SELECT * FROM SalesLT.CallLog<br>
+<br>
+--Overriding Identity<br>
+SET IDENTITY_INSERT SalesLT.CallLog ON<br>
+INSERT INTO SalesLT.CallLog (CallID, SalesPerson, CustomerID, PhoneNumber)<br>
+VALUES<br>
+(10,'adventure-works\jose1',10,'926-555-0159')<br>
+SET IDENTITY_INSERT SalesLT.CallLog OFF<br>
+
+
+
+--Updating Data<br>
+UPDATE SalesLT.CallLog<br>
+SET Notes = 'No Notes'<br>
+WHERE Notes IS NULL<br>
+
+SELECT * FROM SalesLT.CallLog<br>
+
+UPDATE SalesLT.CallLog<br>
+SET SalesPerson = c.SalesPerson, PhoneNumber = c.Phone<br>
+FROM SalesLT.Customer AS c<br>
+WHERE c.CustomerID = SalesLT.CallLog.CustomerID<br>
+<br>
+DELETE FROM SalesLT.CallLog<br>
+<br>
+DELETE FROM SalesLT.CallLog<br>
+WHERE CallTime < DateAdd(dd, -7, GETDATE())<br>
+<br>
+TRUNCATE TABLE SalesLT.CallLog<br>
+
+
 ### 10 | Programming with Transact-SQL
+
+![Programming with Transact-SQL](https://github.com/yang0339/Microsoft-Professional-Program-Learning-Materials/blob/master/DAT201x%20Querying%20with%20Transact-SQL%20screenshots/Programming%20with%20T-SQL.jpg)
+
+--PROGRAMMING IN SQL<br>
+<br>
+/*<br>
+	Batches: GO<br>
+	Comments: /* */<br>
+	Variables: <br>
+		-work only with one batch<br>
+		DECLARE @City VARCHAR(20) = 'Toronto'<br>
+		SET @City = 'Chengdu'<br>
+		-can use with SELECT<br>
+		SELECT @MAX_DATE = MAX(Date) FROM SalesLT.SalesOrderHeader<br>
+		PRINT @MAX_DATE<br>
+	Conditional Branching:<br>
+		-IF...ELSE:<br>
+			UPDATE SalesLT.Product<br>
+			SET DiscontunedDate=GETDATE()<br>
+			WHERE ProductID = 680<br>
+<br>
+			IF @@ROWCOUNT &lt; 1<br>
+			BEGIN<br>
+				PRINT 'Product not Found'<br>
+			END<br>
+			ELSE<br>
+			BEGIN<br>
+				PRINT 'Product Updated'<br>
+			END<br>
+	<br>
+	Looping:<br>
+		DECLARE @counter int = 1<br>
+		WHILE @counter &lt;= 5<br>
+<br>
+		BEGIN<br>
+			INSERT SalesLT.DemoTable(Description)<br>
+			VALUES('ROW' + CONVERT(varchar(5), @counter)<br>
+			SET @counter = @counter+1<br>
+		END<br>
+		SELECT Description FROM SalesLT.DemoTable<br>
+	
+	Stored Procedure:<br>
+		CREATE PROCEDURE SalesLT.GetProductByCategory (@CategoryID INT =NULL)<br>
+		AS<br>
+			IF @CategoryID IS NULL<br>
+				SELECT ProductID, Name, Color, Size, ListPrice<br>
+				FROM SalesLT.Product<br>
+			ELSE <br>
+				SELECT ProductID, Name, Color, Size, ListPrice<br>
+				FROM SalesLT.Product<br>
+				WHERE ProductCategoryID = @CategoryID<br>
+<br>
+		EXEC SalesLT.GetProductByCategory<br>
+		EXEC SalesLT.GetProductByCategory 5<br>
+*/<br>
 ### 11 | Error Handling and Transactions
+
+![Error Handling and Transactions](https://github.com/yang0339/Microsoft-Professional-Program-Learning-Materials/blob/master/DAT201x%20Querying%20with%20Transact-SQL%20screenshots/Error%20Handling%20and%20Transactions.jpg)
