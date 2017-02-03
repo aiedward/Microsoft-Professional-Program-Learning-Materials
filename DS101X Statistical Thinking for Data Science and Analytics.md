@@ -18,13 +18,15 @@ What should a non-Data Scientist know about Data Science?
 
 ## Week 2: Statistics and Probability I
 
-### Statistical Thinking for Data Science
+Statistical Thinking for Data Science
 Numerical Data 1 Simple Visualization and Summaries
 Numerical Data 2 Simple Visualization and Summaries
 ### Numerical Data 3 Association
 ![association and causation](https://github.com/yang0339/Microsoft-Professional-Program-Learning-Materials/blob/master/DS101X%20Statistical%20Thinking%20for%20Data%20Science%20and%20Analytics/association%20and%20causation.jpg)
 
 ### Data Collection - Sampling
+![bias in samples estimate](https://github.com/yang0339/Microsoft-Professional-Program-Learning-Materials/blob/master/DS101X%20Statistical%20Thinking%20for%20Data%20Science%20and%20Analytics/bias%20in%20sample%20estimate.PNG)
+
 ### Introduction to Probability
 ### Statistical Inference - Confidence Intervals
 ### Statistical Inference - Significance tests
