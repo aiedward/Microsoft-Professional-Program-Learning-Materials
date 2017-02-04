@@ -30,20 +30,46 @@ Numerical Data 2 Simple Visualization and Summaries
 ### Introduction to Probability
 ### Statistical Inference - Confidence Intervals
 ### Statistical Inference - Significance tests
+
+[But P-value is intrinsically cofusing!](http://www.nature.com/news/scientific-method-statistical-errors-1.14700#/cause)
+This article suggested the following:
+> Most scientists would look at his original P value of 0.01 and say that there was just a 1% chance of his result being a false alarm. But they would be wrong. The P value cannot say this: all it can do is summarize the data assuming a specific null hypothesis. It cannot work backwards and make statements about the underlying reality.
+
+> According to one widely used calculation5, a P value of 0.01 corresponds to a false-alarm probability of at least 11%, depending on the underlying probability that there is a true effect; a P value of 0.05 raises that chance to at least 29%. So Motyl's finding had a greater than one in ten chance of being a false alarm. Likewise, the probability of replicating his original result was not 99%, as most would assume, but something closer to 73% — or only 50%, if he wanted another 'very significant' result6, 7. In other words, his inability to replicate the result was about as surprising as if he had called heads on a coin toss and it had come up tails.
+
+![P-value graph](https://github.com/yang0339/Microsoft-Professional-Program-Learning-Materials/blob/master/DS101X%20Statistical%20Thinking%20for%20Data%20Science%20and%20Analytics/p-graphic.jpg)
+
 ### Status of Current Observational Health Studies
 ### Statistical Terms Explained
+
+Some Assumptions: <br>
+- No measurement error;
+- No selection bias;
+- No unmeasured confounders.
+
 ### Unknown Characteristics of Observational Health Studies
 ### Lessons Learnt from OMOP Experiments
 ### P-value Calibration
-### Concluding Remarks
+
+![Empirical Calibration of P value](https://github.com/yang0339/Microsoft-Professional-Program-Learning-Materials/blob/master/DS101X%20Statistical%20Thinking%20for%20Data%20Science%20and%20Analytics/Empirical%20Calibration%20of%20P%20value.png)
+
+Safe below the dased line.
 
 ## Week 3: Statistics and Probability II
 
 ### Conditional Probability
 ### Bayes' Formula
+
+![conditional prob and Bayes formula](https://github.com/yang0339/Microsoft-Professional-Program-Learning-Materials/blob/master/DS101X%20Statistical%20Thinking%20for%20Data%20Science%20and%20Analytics/conditional%20prob%20and%20Bayes%20formula.jpg)
+
 ### Studying Association: Two-way Table
 ### Studying Association: Chi-square Test of Independence
+
+![chi-square formula](https://github.com/yang0339/Microsoft-Professional-Program-Learning-Materials/blob/master/DS101X%20Statistical%20Thinking%20for%20Data%20Science%20and%20Analytics/chi-square.png)
+
 ### Studying Association: One-way Analysis of Variance
+![source of variation](https://github.com/yang0339/Microsoft-Professional-Program-Learning-Materials/blob/master/DS101X%20Statistical%20Thinking%20for%20Data%20Science%20and%20Analytics/source%20of%20variation.png)
+
 ### Regression Analysis 1 and 2
 ### Regression Analysis 3 and 4
 ### Regression Analysis 4 and Concluding Remarks
