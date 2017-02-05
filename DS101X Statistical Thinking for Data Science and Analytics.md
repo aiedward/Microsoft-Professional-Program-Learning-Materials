@@ -2,25 +2,25 @@
 
 [Course Syllabus](https://d37djvu3ytnwxt.cloudfront.net/assets/courseware/v1/33ad7c92b39bbaea35b505415788ea87/asset-v1:ColumbiaX+DS101X+1T2016+type@asset+block/DS101X_Course_Syllabus.pdf)
 
-Week 1: Introduction to Data Science
+## Week 1: Introduction to Data Science
 
-## Introduction to Data Science
-What is Data Science?
-What questions can Data Science answer?
-Why is there an explosion of data?
-What role does data visualization play in Data Science?
-How did you become interested in Data Science?
-What do you predict will happen in Data Science in 5 years?
-What are the most important skills for a Data Scientist?
-What should a non-Data Scientist know about Data Science?
-What should a non-Data Scientist know about Data Science?
+### Introduction to Data Science
+What is Data Science?<br>
+What questions can Data Science answer?<br>
+Why is there an explosion of data?<br>
+What role does data visualization play in Data Science?<br>
+How did you become interested in Data Science?<br>
+What do you predict will happen in Data Science in 5 years?<br>
+What are the most important skills for a Data Scientist?<br>
+What should a non-Data Scientist know about Data Science?<br>
+What should a non-Data Scientist know about Data Science?<br>
 
 
 ## Week 2: Statistics and Probability I
 
-Statistical Thinking for Data Science
-Numerical Data 1 Simple Visualization and Summaries
-Numerical Data 2 Simple Visualization and Summaries
+Statistical Thinking for Data Science<br>
+Numerical Data 1 Simple Visualization and Summaries<br>
+Numerical Data 2 Simple Visualization and Summaries<br>
 ### Numerical Data 3 Association
 ![association and causation](https://github.com/yang0339/Microsoft-Professional-Program-Learning-Materials/blob/master/DS101X%20Statistical%20Thinking%20for%20Data%20Science%20and%20Analytics/association%20and%20causation.jpg)
 
@@ -73,11 +73,59 @@ Safe below the dased line.
 ### Regression Analysis 1 and 2
 ### Regression Analysis 3 and 4
 ### Regression Analysis 4 and Concluding Remarks
+
+![regression variance](https://github.com/yang0339/Microsoft-Professional-Program-Learning-Materials/blob/master/DS101X%20Statistical%20Thinking%20for%20Data%20Science%20and%20Analytics/Regression%20and%20variance.jpg)
+
 ### Types of Data Analytics
+
+![text analytics intro](https://github.com/yang0339/Microsoft-Professional-Program-Learning-Materials/blob/master/DS101X%20Statistical%20Thinking%20for%20Data%20Science%20and%20Analytics/text%20analytics%20intro.jpg)
+
 ### Clustering Text
+![text cluster procedure](https://github.com/yang0339/Microsoft-Professional-Program-Learning-Materials/blob/master/DS101X%20Statistical%20Thinking%20for%20Data%20Science%20and%20Analytics/text%20cluster%20procedure.jpg)
+
+* Preprocessing:
+  * Stopwords removing
+  * Stemming
+* Simple Metrics
+  * Word count
+  * Entity matching
+  * Collocation
+* Clustering
+  * Summerize content
+  * Create feature for supervised methods
+  * Labeling (sometimes labels are given, other times should be inferred)
+* Clustering algorithm
+  * K-Means
+* Vectorization
+  * Normalize count on TF-IDF
+  * Cosine Similarity<br>
+ 
+
 ### Topic Modeling
+
+![Topic Modeling](https://github.com/yang0339/Microsoft-Professional-Program-Learning-Materials/blob/master/DS101X%20Statistical%20Thinking%20for%20Data%20Science%20and%20Analytics/Topic%20Modeling.jpg)
+
+#### Mixed Membership Models
+> Latent Dirichlet Allocation
+
+Basically, it is a **Dirichlet** distribution of **topic over words** and **documents over topics**; and **Multinomial** distribution of **words over topics**.
+
+Some useful pictures for illustration.
+
+![pic1](http://www.karinabunyik.com/content/images/2014/Oct/Screen-Shot-2014-10-17-at-15-32-05.png)
+![pic2](https://cdn-images-1.medium.com/max/800/0*II7wZlKViCt4ssBm.png)
+![pic3](http://salsahpc.indiana.edu/b649proj/images/proj3_LDA%20structure.png)
+![pic4](https://mollermara.com/blog/lda/lda-tikz.png)
+
+
 ### Metrics for Label Description
-### Concluding Remarks
+
+![Metrics for Label Description](https://github.com/yang0339/Microsoft-Professional-Program-Learning-Materials/blob/master/DS101X%20Statistical%20Thinking%20for%20Data%20Science%20and%20Analytics/Metrics%20for%20Label%20Description.jpg)
+
+
+> PMI (Pointwise Multual Information)
+
+> MI (Mutual Information): PMI averaged over all events
 
 ## Week 4: Exploratory Data Analysis and Visualization
 
