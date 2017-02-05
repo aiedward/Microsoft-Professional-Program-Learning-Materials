@@ -128,32 +128,37 @@ Some useful pictures for illustration.
 > MI (Mutual Information): PMI averaged over all events
 
 ## Week 4: Exploratory Data Analysis and Visualization
-
-### Graphs Are Comparisons
-### Use Data To Answer Questions
-### A Case Example
-### Decision Making Process of Data Visualization 1
-### Decision Making Process of Data Visualization 2
-### Decision Making Process Main Worked Example
-### Why Visualize Data Worked Example 1
-### Why Visualize Data Worked Example 2
-### Dashboards
-### Dashboards Worked Example 1
-### Dashboards Worked Example 2
+Graphs Are Comparisons<br>
+Use Data To Answer Questions<br>
+A Case Example<br>
+Decision Making Process of Data Visualization 1<br>
+Decision Making Process of Data Visualization 2<br>
+Decision Making Process Main Worked Example<br>
+Why Visualize Data Worked Example 1<br>
+Why Visualize Data Worked Example 2<br>
+Dashboards<br>
+Dashboards Worked Example 1<br>
+Dashboards Worked Example 2<br>
 
 ## Week 5: Introduction to Bayesian Modeling
 
-### Introduction to Bayesian Modeling
-### Probability Calibration
-### Probability As Measurement of Uncertainty
+Introduction to Bayesian Modeling<br>
+Probability Calibration<br>
+Probability As Measurement of Uncertainty<br>
+
 ### Bayesian Inference
-### How To Use Prior Information
+
+![bayesian inference](https://github.com/yang0339/Microsoft-Professional-Program-Learning-Materials/blob/master/DS101X%20Statistical%20Thinking%20for%20Data%20Science%20and%20Analytics/bayesian%20inference.jpg)
+
+How To Use Prior Information<br>
 ### Bayesian Modeling in Practice
-### Business Applications in Bayesian Statistics Introduction
-### Data Collection and Model Building 1
-### Data Collection and Model Building 2
-### Model Building Review
-### Model Insights 1
-### Model Insights 2
-### Example Modeling Museum Membership Renewal
-### Example Modeling User Behavior on a Deals Website
+
+
+Business Applications in Bayesian Statistics Introduction<br>
+Data Collection and Model Building 1<br>
+Data Collection and Model Building 2<br>
+Model Building Review<br>
+Model Insights 1<br>
+Model Insights 2<br>
+Example Modeling Museum Membership Renewal<br>
+Example Modeling User Behavior on a Deals Website<br>
