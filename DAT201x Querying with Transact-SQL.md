@@ -3,22 +3,27 @@
 ### 01 | Introduction to Transact-SQL
 
 #### SELECT one-in-all:
+```sql
 SELECT OrderDateKey, SUM(SalesAmount) AS TotalSales  
 FROM FactInternetSales  
 WHERE Status = 'shipped'
 GROUP BY OrderDateKey  
 HAVING OrderDateKey > 20010000  
 ORDER BY OrderDateKey DESC;  
+```
 
 ### 02 | Querying Tables with SELECT
 
 #### Data Type conversion:
-CAST/TRY_CAST<br>
-CONVERT/TRY_CONVERT<br>
-PARSE/TRY_PARSE<br>
-STR<br>
+```sql
+CAST/TRY_CAST
+CONVERT/TRY_CONVERT
+PARSE/TRY_PARSE
+STR
+```
 
 #### Nulls
+
 ISNULL(col/var, value) //return value is col or var is null<br>
 NULLIF(col/var, value) //return null if col or var is value<br>
 COALESCE(col1/var1, col2/var2 ...) //return the 1st non-null col/var in the list<br>
@@ -27,41 +32,45 @@ COALESCE(col1/var1, col2/var2 ...) //return the 1st non-null col/var in the list
 
 <em>Examples:</em>
 
-- SELECT IsNull(try_cast(Size As Integer),0) As NumericSize FROM SalesLT.Product
+```sql
+SELECT IsNull(try_cast(Size As Integer),0) As NumericSize FROM SalesLT.Product
 
-- SELECT ProductNumber, NULLIF(Color,'Multi') + ',' + IsNull(Size, '') As ProductDetails FROM SalesLT.Product
+SELECT ProductNumber, NULLIF(Color,'Multi') + ',' + IsNull(Size, '') As ProductDetails FROM SalesLT.Product
 
-- SELECT Name, <br>
-	Case<br>
-	   When SellEndDate IS NULL THEN 'on sale'<br>
-		 ELSE 'Discontinued'<br>
-		 END AS SalesStatus<br>
-  FROM SalesLT.Product<br>
+SELECT Name, 
+  Case
+    When SellEndDate IS NULL THEN 'on sale'
+    ELSE 'Discontinued'
+    END AS SalesStatus
+FROM SalesLT.Product
       
-- SELECT DISTINCT ISNULL(Color, 'NONE') AS COLOR, ISNULL(Size, '-') AS SIZE<br>
-  FROM SalesLT.Product<br>
-  ORDER BY COLOR DESC<br>
+SELECT DISTINCT ISNULL(Color, 'NONE') AS COLOR, ISNULL(Size, '-') AS SIZE<br>
+FROM SalesLT.Product<br>
+ORDER BY COLOR DESC<br>
   
-- SELECT TOP 10 Name, ListPrice FROM SalesLT.Product<br>
-  ORDER BY ListPrice DESC<br>
+SELECT TOP 10 Name, ListPrice FROM SalesLT.Product<br>
+ORDER BY ListPrice DESC<br>
 
-- SELECT Name, ListPrice FROM SalesLT.Product<br>
-  ORDER BY ListPrice DESC<br>
-  OFFSET 5 ROWS<br>
-  FETCH FIRST 10 ROW ONLY<br>
+SELECT Name, ListPrice FROM SalesLT.Product<br>
+ORDER BY ListPrice DESC<br>
+OFFSET 5 ROWS<br>
+FETCH FIRST 10 ROW ONLY<br>
 
-- SELECT TOP 10 PERCENT Name, Color, Size FROM SalesLT.Product WHERE ProductID > 100
+SELECT TOP 10 PERCENT Name, Color, Size FROM SalesLT.Product WHERE ProductID > 100
+```
 
 #### Filtering and Removing Duplicate
 
 ##### wildcard: %:any length, _: one digit
 ##### Specify predicates in WHERE CLAUSE: "= < >", IN, BETWEEN, LIKE, AND, OR, NOT
 
+```sql
 - SELECT Name FROM SalesLT.Product WHERE ProductNumber LIKE '%FR%'
 - SELECT Name FROM SalesLT.Product WHERE ProductNumber LIKE 'FR-_[0-9][0-9]_-[0-9][0-9]'
 - SELECT Name FROM SalesLT.Product WHERE SellEndDate IS NOT NULL
 - SELECT Name FROM SalesLT.Product WHERE SellEndDate BETWEEN '2006/1/1' AND '2006/12/31'
 - SELECT ProductCategoryID, SellEndDate, Name, ListPrice FROM SalesLT.Product WHERE ProductCategoryID IN (5,6,7,8) AND SellEndDate BETWEEN '2006/1/1' AND '2006/12/31'
+```
 
 
 
