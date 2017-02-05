@@ -455,6 +455,8 @@ TRUNCATE TABLE SalesLT.CallLog
 		EXEC SalesLT.GetProductByCategory
 		EXEC SalesLT.GetProductByCategory 5
 *
+```
+
 ### 11 | Error Handling and Transactions
 
 ![Error Handling and Transactions](https://github.com/yang0339/Microsoft-Professional-Program-Learning-Materials/blob/master/DAT201x%20Querying%20with%20Transact-SQL%20screenshots/Error%20Handling%20and%20Transactions.jpg)
