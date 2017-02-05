@@ -152,6 +152,7 @@ Probability As Measurement of Uncertainty<br>
 
 How To Use Prior Information<br>
 ### Bayesian Modeling in Practice
+![Bayesian Modeling in Practice](https://github.com/yang0339/Microsoft-Professional-Program-Learning-Materials/blob/master/DS101X%20Statistical%20Thinking%20for%20Data%20Science%20and%20Analytics/Bayesian%20Modeling%20in%20Practice.jpg)
 
 
 Business Applications in Bayesian Statistics Introduction<br>
