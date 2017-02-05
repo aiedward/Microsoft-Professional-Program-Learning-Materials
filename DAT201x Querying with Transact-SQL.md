@@ -454,7 +454,7 @@ TRUNCATE TABLE SalesLT.CallLog
 
 		EXEC SalesLT.GetProductByCategory
 		EXEC SalesLT.GetProductByCategory 5
-*
+*/
 ```
 
 ### 11 | Error Handling and Transactions
