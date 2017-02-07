@@ -66,14 +66,56 @@ np.std()
 ```
 ## Module 5 Matplotlib
 ```python
-Basic plot with matplotlib
-Histograms
-Customization
-```
-## Module 6
-Boolean logic and control flow
-Pandas
+# line plot and scatter plot
+import matplotlib.pyplot as plt
+plt.plot(x,y)
+plt.scatter(x,y)
+plt.show()
 
+# Histograms
+import matplotlib.pyplot as plt
+help(plt.hist)
+plt.hist(x,bins=3)
+plt.show()
+
+# Customization
+import matplotlib.pyplot as plt
+plt.xlabel('x')
+plt.ylabel('y')
+plt.title('title')
+plt.yticks([0,2,4,6,8,10],
+           ['0','2M','4M','6M','8M','10M'])
+plt.fill_between(x,y,val,color='red')
+
+```
+## Module 6 Boolean Logic,Control Flow and Pandas
 ```python
-python hello world!
+# if
+if
+  condition:
+elsif: 
+    statement
+else:
+  statement
+
+# for
+for num in range(a,b):
+  statement
+  
+# pandas
+# read csv
+import pandas as pd
+df = pd.read_csv('/filepath', sep=', ', names=None, index_col=0, nrows=None, decimal='.', encoding='utf-8')
+
+# subsetting:
+pd_data.col_name
+pd_data['col_name']
+
+# Row Access
+df.loc['row_name']
+
+# Element Access
+df.loc['row_name','col_name']
+df.loc['row_name']['col_name']
+df['col_name'].loc['row_name']
 ```
