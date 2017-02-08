@@ -79,14 +79,14 @@ m <- matrix(1:6, byrow=TRUE, nrow=2,
             dimnames=list(c('row1','row2'),
                           c('col1','col2','col3')))
                           
-#Subsetting matrices
+# Subsetting matrices
 m[1,3] # R's index starts at 1
 m[2,]
 m[4] # count by column the 4th element
 m[c(1,2),c("row2","row3")]
 m["row1",c(TRUE, FALSE)]
 
-#Matrix arithmetic
+# Matrix arithmetic
 colSums() - rowSums()
 ```
 ## Module 4 Factors
@@ -126,6 +126,7 @@ song$duration
 song$friends <- c('bob','cindy')
 song[['friends']] <- list('bob','cindy')
 ```
+
 ## Module 6 DataFrame
 ```R
 # Create data frame
@@ -138,7 +139,7 @@ df <- data.frame(name, age, child,
                  stringAsFactors=FALSE)
 
 # Subset
-df[2,"age']
+df[2,"age"]
 df[c(2,4), c("age","child")]
 df[2] # returns a DATAFRAME that contain 2nd col of original
 df$child - df["child"] # returns a VECTOR
