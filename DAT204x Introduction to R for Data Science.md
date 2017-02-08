@@ -161,7 +161,55 @@ df[order(df$age, decreasing=TRUE),]
 ```
 ## Module 7 Graphics
 ```R
-Basic graphics
-Customizing plots
-Multiple plots
+# Basic graphics: plot()
+# plot automatically adjust w.r.t. to the input
+plot(countries$religion) # categorical
+plot(countries$religion, countries$continent) # categorical * categorical
+plot(countries$area) # numerical
+plot(countries$area, countries$population) # numerical * numerical
+
+# histogram: hist()
+hist(countries$population, breaks=10)
+
+# other plot:
+boxplot() - barplot() - pairs()
+
+# Customizing plots
+plot(mercury$temperature, mercury$pressure,
+     xlab="Temperature",
+     ylab="Pressure",
+     main="Temp vs. pressure for Mercury",
+     type="l",            # plot type
+     col="orange",        # this is color
+     col.main="darkgray", # main title color
+     cex.axis=0.6,        # label size
+     lty=5,               # line type
+     pch=4)               # points symbol
+     
+# par() - parameter
+# use par() to specify session-wise graphical parameters.
+
+# Multiple plots
+par(mfrow=c(2,2)) # 2*2 subplots with plots adding in row-wise way
+par(mfcol=c(2,2))
+# layout()
+grid <- matrix(c(1,1,2,3), nrow=2, byrow=TRUE)
+layout(grid)
+# reset the grid
+par(mfrow=c(1,1))
+layout(1)
+# better to store the old settings beforehand
+old_par <- par()
+par(old_par) # after changes made
+
+# add layers
+plot(shop$ads, shope$sales)
+lm_sales <- lm(shope$sales ~ shope$ads)
+abline(coef(ls_sales), lwd=2)
+# other elements to add
+points() - segments() - lines() - text()
+
+# to add line to a scatter plot, order before
+ranks <- order(shope$sales)
+lines(shop$ads[ranks], shop$sales[ranks])
 ```
