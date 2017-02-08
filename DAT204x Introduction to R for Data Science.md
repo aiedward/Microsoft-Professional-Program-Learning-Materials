@@ -43,24 +43,44 @@ length(card_count)
 # Vectoes are homogeneous (atomic vectors) that can only hold a single type of data. <> lists
 
 
-# Vector arithmetic
-
+# Vector arithmetic: computations are in element-wise manner
+sum(bank_account)
+# this expresssion returns a boolean vector
+earnings > expenses
 
 # Subsetting vectors
+remain <- card_count[c(1,4)]
+remain <- card_count[c(4,1)]
+remain <- card_count[c("spade","diamond"])
+# remove the 1st element
+remain <- card_count[-1]
+remain <- card_count[-c(1,3)] # but minus does not work with names
+
+# R perform recycling for the shorter vector if two vector lengths are different.
+val <- c(12,13,10,9,8)
+remain <- val[c(TRUE, FALSE, TRUE)] # result remain==c(12,10,9)
 ```
-## Module 3
+## Module 3 Matrices
+```python
 Create name matrices
 Subsetting matrices
 Matrix arithmetic
 ## Module 4
 Factors
-## Module 5
+```
+## Module 5 List
+```python
 Create name list
 Subset and extend list
-## Module 6
+```
+## Module 6 DataFrame
+```python
 Explore data frame
 Subset, extend, and sort data frame
-## Module 7
+```
+## Module 7 Graphics
+```python
 Basic graphics
 Customizing plots
 Multiple plots
+```
