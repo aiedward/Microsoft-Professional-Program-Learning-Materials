@@ -61,7 +61,7 @@ val <- c(12,13,10,9,8)
 remain <- val[c(TRUE, FALSE, TRUE)] # result remain==c(12,10,9)
 ```
 ## Module 3 Matrices
-```python
+```R
 #Create name matrices
 matrix(1:6, nrow=2)
 matrix(LETTERS[1:6], ncol=2)
@@ -90,7 +90,7 @@ m["row1",c(TRUE, FALSE)]
 colSums() - rowSums()
 ```
 ## Module 4 Factors
-```python
+```R
 # Factors are for categorical values
 blood_factor <- factor(blood_data)
 str(blood_facto) # use string to check the info
@@ -107,7 +107,7 @@ tshirt_size <- factor(tshirt, ordered=TRUE,
 ```
 
 ## Module 5 List
-```python
+```R
 # Create name list
 song <- list("cool guys", 190, 5, list(title="whatup girls", duration=120))
 is.list(song)
@@ -127,12 +127,12 @@ song$friends <- c('bob','cindy')
 song[['friends']] <- list('bob','cindy')
 ```
 ## Module 6 DataFrame
-```python
+```R
 Explore data frame
 Subset, extend, and sort data frame
 ```
 ## Module 7 Graphics
-```python
+```R
 Basic graphics
 Customizing plots
 Multiple plots
