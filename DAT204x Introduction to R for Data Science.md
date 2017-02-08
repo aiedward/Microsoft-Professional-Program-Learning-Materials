@@ -128,8 +128,35 @@ song[['friends']] <- list('bob','cindy')
 ```
 ## Module 6 DataFrame
 ```R
-Explore data frame
-Subset, extend, and sort data frame
+# Create data frame
+name <- c('andy','bob','cindy')
+age <- c(21, 22, 23)
+child <- c(FALSE, TRUE, FALSE)
+df <- data.frame(name, age, child)
+
+df <- data.frame(name, age, child,
+                 stringAsFactors=FALSE)
+
+# Subset
+df[2,"age']
+df[c(2,4), c("age","child")]
+df[2] # returns a DATAFRAME that contain 2nd col of original
+df$child - df["child"] # returns a VECTOR
+
+# Extend
+df$weight <- weight
+df[["weight"]] <- weight
+cbind(df, weight) # add column
+# to add row you have to create a separate dataframe and use rbind, with all names match.
+tom <- data.frame(name="Tom", age=33, child=TRUE)
+rbind(df, tom)
+
+# Sort data frame
+ranks <- order(df$age)
+df <- df[ranks,]
+# in one line
+df[order(df$age, decreasing=TRUE),]
+
 ```
 ## Module 7 Graphics
 ```R
