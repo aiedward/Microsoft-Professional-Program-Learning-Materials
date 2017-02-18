@@ -1,3 +1,38 @@
+# DAT201x Querying with Transact-SQL
+
+## Course Map
+* [SELECT](#Section 1)
+* Join
+* Union - Intersect - Except
+* Using Functions and Aggregating Data
+	* Intro to Built-in Functions
+	* Scalar Functions
+	* Aggregate Functions
+	* Logical Functions (ISNUMERIC - IIF - CHOOSE)
+	* Window Functions
+	* Grouping by GROUP BY
+	* Filtering with HAVING
+* Subqueries and APPLY
+* Using Table Expression
+	* Views
+	* Temp Tables
+	* Table-Valued Functions (TVF)
+	* Derived Tables
+	* Common Table Expression (CTEs)
+* Grouping Sets and Pivoting Data
+	* Grouping Sets
+	* ROLLUP and CUBE
+	* Identifying Groupings in Results
+	* Pivoting Data
+	* Using PIVOT and UNPIVOT
+* Modifying Data
+	* Insersion
+	* Generating Identifiers
+	* Update
+	* Deletions
+* Programming with T-SQL
+* Error Handling and Transactions
+
 ## Section 1
 
 ### 01 | Introduction to Transact-SQL
