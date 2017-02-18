@@ -1,7 +1,7 @@
 # DAT201x Querying with Transact-SQL
 
 ## Course Map
-* [SELECT](#Section 1)
+* [SELECT](# Section 1)
 * Join
 * Union - Intersect - Except
 * Using Functions and Aggregating Data
