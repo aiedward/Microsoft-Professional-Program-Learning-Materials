@@ -26,7 +26,7 @@ Learning Material Hub for Microsoft Professional Program (MPP)
 ### [DAT208x: Introduction to Python for Data Science](https://github.com/yang0339/Microsoft-Professional-Program-Learning-Materials/blob/master/DAT208x%20Introduction%20to%20Python%20for%20Data%20Science.md) <br/>and [DAT204x: Introduction to R for Data Science](https://github.com/yang0339/Microsoft-Professional-Program-Learning-Materials/blob/master/DAT204x%20Introduction%20to%20R%20for%20Data%20Science.md)
 ### [DAT203.1x: Data Science Essentials](https://github.com/yang0339/Microsoft-Professional-Program-Learning-Materials/blob/master/DAT203.1x%20Data%20Science%20Essentials.md)
 ### [DAT203.2x: Principles of Machine Learning](https://github.com/yang0339/Microsoft-Professional-Program-Learning-Materials/blob/master/DAT203.2x%20Principles%20of%20Machine%20Learning.md)
-### [DAT210x: Programming with Python for Data Science]()
+### [DAT210x: Programming with Python for Data Science](https://github.com/yang0339/Microsoft-Professional-Program-Learning-Materials/blob/master/DAT210x%20Programming%20with%20Python%20for%20Data%20Science.md)
 ### [DAT203.3x: Applied Machine Learning]()
 ### [DAT102x: Data Science Professional Project]()
 
