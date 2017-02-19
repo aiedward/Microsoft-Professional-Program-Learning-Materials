@@ -222,7 +222,7 @@ On the other hand, if your feature is **nominal** (and thus there is no obvious 
 [[1 0 1 1 1 1 1 1 1 1 1]
  [0 2 0 1 0 2 1 0 0 1 0]]
  ```
- #### Graphical Features
+#### Graphical Features
  ```python
  # Uses the Image module (PIL)
 from scipy import misc
@@ -307,9 +307,61 @@ The **errors='coerce'** parameter instructs Pandas to enter a NaN at any field w
 
 
 ## Exploring Data
-### Visualizations
 ### Basic Plots
+#### Histogram Plots
+```python
+import pandas as pd
+import matplotlib
+matplotlib.style.use('ggplot') # Look Pretty
+# If the above line throws an error, use plt.style.use('ggplot') instead
+
+student_dataset = pd.read_csv("/Datasets/students.data", index_col=0)
+
+my_series = student_dataset.G3
+my_dataframe = student_dataset[['G3', 'G2', 'G1']] 
+
+my_series.plot.hist(alpha=0.5)
+my_dataframe.plot.hist(alpha=0.5)
+```
+
+#### Scatter Plot
+```python
+import pandas as pd
+import matplotlib
+
+matplotlib.style.use('ggplot') # Look Pretty
+# If the above line throws an error, use plt.style.use('ggplot') instead
+
+student_dataset = pd.read_csv("/Datasets/students.data", index_col=0) student_dataset.plot.scatter(x='G1', y='G3')
+```
+
+#### 3D plot
+```python
+import matplotlib
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+
+import pandas as pd
+matplotlib.style.use('ggplot') # Look Pretty
+# If the above line throws an error, use plt.style.use('ggplot') instead
+
+student_dataset = pd.read_csv("/Datasets/students.data", index_col=0)
+
+fig = plt.figure()
+ax = fig.add_subplot(111, projection='3d')
+ax.set_xlabel('Final Grade')
+ax.set_ylabel('First Grade')
+ax.set_zlabel('Daily Alcohol')
+
+ax.scatter(student_dataset.G1, student_dataset.G3, student_dataset['Dalc'], c='r', marker='.')
+plt.show()
+```
+
+
 ### Higher Dimensionality
+
+
+
 ### Dive Deeper
 ## Transforming Data
 ### PCA
