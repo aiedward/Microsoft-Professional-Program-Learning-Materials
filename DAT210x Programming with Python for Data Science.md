@@ -462,6 +462,7 @@ If you have reason to believe your question has a simple answer, or that the fea
 PCA's approach to dimensionality reduction is to derive a set of degrees of freedom that can then be used to reproduce most of the variability of your data. It accesses your dataset's **covariance** structure directly using matrix calculations and eigenvectors to compute **the best unique features** that describe your samples.
 
 PCA ensures that each newly computed view (feature) is **orthogonal or linearly independent to all previously computed ones**, minimizing these overlaps. PCA also orders the features by importance, assuming that the **more variance expressed in a feature, the more important it is**.
+
 ![pic_example_PCA](http://courses.edx.org/asset-v1:Microsoft+DAT210x+4T2016+type@asset+block@PCA1.jpg)
 
 ```python
@@ -492,6 +493,7 @@ Some other things to pay attention:
 Its goal: to uncover the intrinsic, geometric-nature of your dataset, as opposed to simply capturing your datasets most variant directions.
 Isomap operates by first computing each record's nearest neighbors. Only a sample's K-nearest samples qualify for being included in its nearest-neighborhood samples list. A neighborhood graph is then constructed by linking each sample to its K-nearest neighbors.
 Just as you would drive waypoint to waypoint in order to navigate to a final destination, so too does Isomap travel from sample to sample, taking the shortest neighborhood paths between any two distant samples in your dataset. The straightforward, e.g. high-dimensional, direct Euclidean distance between any two records fails to properly account for any intrinsic, nonlinear geometry present within your dataset's features.
+
 ![example_pic_isomap](http://courses.edx.org/asset-v1:Microsoft+DAT210x+4T2016+type@asset+block@isomap_replace.png)
 
 
@@ -539,7 +541,7 @@ T = preprocessing.Normalizer().fit_transform(df)
 
 ## Data Modeling
 
-### Clustering
+### Clustering - KMeans
 ```python
 >>> from sklearn.cluster import KMeans
 >>> kmeans = KMeans(n_clusters=5)
@@ -566,14 +568,45 @@ plt.show()
 ```
 **Two** other key characteristics of K-Means are that it assumes your samples are **length normalized**, and as such, is sensitive to feature scaling. It also assumes that the cluster sizes are **roughly spherical and similar**; this way, the nearest centroid is always the correct assignment.
 
-[An example for visualization of PCA in K-means](https://github.com/yang0339/Microsoft-Professional-Program-Learning-Materials/blob/master/DAT210x%20Programming%20with%20Python%20for%20Data%20Science/kmeans_PCA.py), [the data source file](https://github.com/yang0339/Microsoft-Professional-Program-Learning-Materials/blob/master/DAT210x%20Programming%20with%20Python%20for%20Data%20Science/Wholesale%20customers%20data.csv)
+[An example for visualization of PCA in K-means](https://github.com/yang0339/Microsoft-Professional-Program-Learning-Materials/blob/master/DAT210x%20Programming%20with%20Python%20for%20Data%20Science/kmeans_PCA.py), and [the data source file](https://github.com/yang0339/Microsoft-Professional-Program-Learning-Materials/blob/master/DAT210x%20Programming%20with%20Python%20for%20Data%20Science/Wholesale%20customers%20data.csv)
+
 ![pic_demo](https://github.com/yang0339/Microsoft-Professional-Program-Learning-Materials/blob/master/DAT210x%20Programming%20with%20Python%20for%20Data%20Science/kmeans_PCA_demo.png)
 
 ### Spliting Data
+A short summary and outlook:
+Every single machine learning class, or estimator as SciKit-Learn call them, implements the .fit() method as you've seen. This will continue to hold true for the supervised one's as well. The unsupervised estimators also allowed you to make use of the following methods:
+* .transform() : without changing the number of samples, alters the value of each existing feature by changing its units
+* .predict() : only with clustering, you could predict the label of the specified sample.
+
+What you'll now see is that supervised learning estimators implement a slightly different set of distinct methods:
+* .predict() : After training your machine learning model, you can predict the labels of new and never seen samples
+* .predict_proba() : For some estimators, you can further see what the probability of the new sample belonging to each label is
+* .score(): The ability to score how well your model fit the training data
+
+```python
+>>> from sklearn.model_selection import train_test_split
+>>> data_train, data_test, label_train, label_test = train_test_split(data, labels, test_size=0.5, random_state=7)
+
+from sklearn.metrics import accuracy_score
+
+# Returns an array of predictions:
+>>> predictions = my_model.predict(data_test) 
+>>> predictions
+[0, 0, 0, 1, 0]
+
+# The actual answers:
+>>> label_train
+[1, 1, 0, 1, 0]
+
+>>> accuracy_score(label_train, predictions)
+0.59999999999999998
+
+>>> accuracy_score(label_train, predictions, normalize=False)
+3
+```
 
 
-
-### K-nearest Neighbors
+### Classification - K-nearest Neighbors
 
 
 ### Regression
