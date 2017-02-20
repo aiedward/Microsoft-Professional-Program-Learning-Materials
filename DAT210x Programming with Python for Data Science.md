@@ -21,7 +21,7 @@
 * Transforming Data
   * PCA
   * Isomap
-  * Data Cleansing
+  * Pre-processing
   * Dive Deeper
 * Data Modeling
   * Clustering
@@ -62,6 +62,7 @@ There are many synonymous names for features. The background of the speaker, as 
 ```python
 df.head(10)
 df.describe() # give statistical info
+df.var() # variance
 df.dtypes
 ```
 * numeric-type: int32, float32, float64.
@@ -292,6 +293,9 @@ array([7, 33, 27, 40, 22], dtype=int64)
 33     2
 40     2
 dtype: int64
+
+df[['height']] =df[['height']].astype("float64")
+df[['height']] =df[['height']].astype("int64")
 ```
 The **errors='coerce'** parameter instructs Pandas to enter a NaN at any field where the conversion fails.
 
@@ -458,23 +462,128 @@ If you have reason to believe your question has a simple answer, or that the fea
 PCA's approach to dimensionality reduction is to derive a set of degrees of freedom that can then be used to reproduce most of the variability of your data. It accesses your dataset's **covariance** structure directly using matrix calculations and eigenvectors to compute **the best unique features** that describe your samples.
 
 PCA ensures that each newly computed view (feature) is **orthogonal or linearly independent to all previously computed ones**, minimizing these overlaps. PCA also orders the features by importance, assuming that the **more variance expressed in a feature, the more important it is**.
+![pic_example_PCA](http://courses.edx.org/asset-v1:Microsoft+DAT210x+4T2016+type@asset+block@PCA1.jpg)
 
+```python
+>>> from sklearn.decomposition import PCA
+>>> pca = PCA(n_components=2)
+>>> pca.fit(df)
+PCA(copy=True, n_components=2, whiten=False)
+
+>>> T = pca.transform(df)
+
+>>> df.shape
+(430, 6) # 430 Student survey responses, 6 questions..
+>>> T.shape
+(430, 2) # 430 Student survey responses, 2 principal components.
+```
+you can recover your original feature values using **.inverse_transform()** so long as you don't drop any components. 
+a few other interesting model attribute with the **.fit()** method:
+* components_ These are your principal component vectors and are linear combinations of your original features. As such, they exist within the feature space of your original dataset.
+* explained_variance_ This is the calculated amount of variance which exists in the newly computed principal components.
+* explained_variance_ratio_ Normalized version of explained_variance_ for when your interest is with probabilities.
+
+Some other things to pay attention:
+* PCA is sensitive to the scaling of features. Unless need to respect the specific scaling, should always **standardize** first.
+* *RandomizedPCA* is a faster training process with accuracy a bit affected. Will be useful for very large dataset.
+* PCA is a **linear transformation** only, therefore cannot discern any complex, nonlinear intricacies. For such cases, you will have to make use different dimensionality reduction algorithms, such as Isomap.
 
 ### Isomap
+Its goal: to uncover the intrinsic, geometric-nature of your dataset, as opposed to simply capturing your datasets most variant directions.
+Isomap operates by first computing each record's nearest neighbors. Only a sample's K-nearest samples qualify for being included in its nearest-neighborhood samples list. A neighborhood graph is then constructed by linking each sample to its K-nearest neighbors.
+Just as you would drive waypoint to waypoint in order to navigate to a final destination, so too does Isomap travel from sample to sample, taking the shortest neighborhood paths between any two distant samples in your dataset. The straightforward, e.g. high-dimensional, direct Euclidean distance between any two records fails to properly account for any intrinsic, nonlinear geometry present within your dataset's features.
+![example_pic_isomap](http://courses.edx.org/asset-v1:Microsoft+DAT210x+4T2016+type@asset+block@isomap_replace.png)
 
-### Data Cleansing
 
-### Dive Deeper
+Isomap is better than linear methods when dealing with almost all types of real image and motion tracking. If you're dataset comes from images captured in a natural way, or your data is characterized by similar types of motions, consider using isomap. 
+```python
+>>> from sklearn import manifold
+>>> iso = manifold.Isomap(n_neighbors=4, n_components=2)
+>>> iso.fit(df)
+Isomap(eigen_solver='auto', max_iter=None, n_components=2, n_neighbors=4,
+    neighbors_algorithm='auto', path_method='auto', tol=0)
+>>> manifold = iso.transform(df)
 
+>>> df.shape
+(430, 6)
+>>> manifold.shape
+(430, 2)
+```
+Isomap is also a bit more **sensitive to noise** than PCA. Noisy data can actually act as a conduit to short-circuit the nearest neighborhood map, cause isomap to prefer the 'noisy' but shorter path between samples that lie on the real geodesic surface of your data that would otherwise be well separated.
+
+When using unsupervised dimensionality reduction techniques, be sure to use the feature scaling on all of your features because the nearest-neighbor search that Isomap bases your manifold on will do poorly if you don't, and PCA will prefer features with larger variances. As explained within the labs' source code, **SciKit-Learn's StandardScaler** is a good-fit for taking care of  scaling your data before performing dimensionality reduction.
+
+
+### Pre-processing
+For a great overview on a few of the normalization methods supported in SKLearn, please check out: [link]( https://stackoverflow.com/questions/30918781/right-function-for-normalizing-input-of-sklearn-svm)
+
+#### StandardScaler
+It assumes that your features are normally distributed (each feature with a different mean and standard deviation), and scales them such that each feature's Gaussian distribution is now centered around 0 and it's standard deviation is 1.
+#### Normalizer
+It looks at all the feature values for a given data point as a vector and normalizes that vector by dividing it by it's magnitude. For example, let's say you have 3 features. The values for a specific point are [x1, x2, x3]. If you're using the default 'l2' normalization, you divide each value by sqrt(x1^2 + x2^2 + x3^2). If you're using 'l1' normalization, you divide each by x1+x2+x3.
+#### MinMaxScaler
+For each feature, this looks at the minimum and maximum value. This is the range of this feature. Then it shrinks or stretches this to the same range for each feature (the default is 0 to 1).
+```python
+from sklearn import preprocessing
+
+T = preprocessing.StandardScaler().fit_transform(df)
+T = preprocessing.MinMaxScaler().fit_transform(df)
+T = preprocessing.MaxAbsScaler().fit_transform(df)
+T = preprocessing.Normalizer().fit_transform(df)
+```
+
+
+### [Dive Deeper](https://courses.edx.org/courses/course-v1:Microsoft+DAT210x+6T2016/courseware/1aabc1638cb64c699ddc447d16e3cfea/d2dd5efbb36c4632af42178081be1c71/?child=first)
 
 
 
 ## Data Modeling
+
 ### Clustering
+```python
+>>> from sklearn.cluster import KMeans
+>>> kmeans = KMeans(n_clusters=5)
+>>> kmeans.fit(df)
+KMeans(copy_x=True, init='k-means++', max_iter=300, n_clusters=5, n_init=10,
+    n_jobs=1, precompute_distances='auto', random_state=None, tol=0.0001,
+    verbose=0)
+
+>>> labels = kmeans.predict(df)
+>>> centroids = kmeans.cluster_centers_
+
+
+fig = plt.figure()
+ax = fig.add_subplot(111)
+ax.scatter(df.Longitude, df.Latitude, marker='.', alpha=0.3)
+
+kmeans_model = KMeans(n_clusters = 7)
+kmeans_model.fit(df)
+
+centroids = kmeans_model.cluster_centers_
+ax.scatter(centroids[:,0], centroids[:,1], marker='x', c='red', alpha=0.5, linewidths=3, s=169)
+print centroids
+plt.show()
+```
+**Two** other key characteristics of K-Means are that it assumes your samples are **length normalized**, and as such, is sensitive to feature scaling. It also assumes that the cluster sizes are **roughly spherical and similar**; this way, the nearest centroid is always the correct assignment.
+
+[An example for visualization of PCA in K-means](https://github.com/yang0339/Microsoft-Professional-Program-Learning-Materials/blob/master/DAT210x%20Programming%20with%20Python%20for%20Data%20Science/kmeans_PCA.py), [the data source file](https://github.com/yang0339/Microsoft-Professional-Program-Learning-Materials/blob/master/DAT210x%20Programming%20with%20Python%20for%20Data%20Science/Wholesale%20customers%20data.csv)
+![pic_demo](https://github.com/yang0339/Microsoft-Professional-Program-Learning-Materials/blob/master/DAT210x%20Programming%20with%20Python%20for%20Data%20Science/kmeans_PCA_demo.png)
+
 ### Spliting Data
+
+
+
 ### K-nearest Neighbors
+
+
 ### Regression
+
+
+
 ### Dive Deeper
+
+
+
 ## Data Modeling II
 ### SVC
 ### Decision Trees
