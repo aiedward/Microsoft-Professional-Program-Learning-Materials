@@ -331,7 +331,8 @@ import matplotlib
 matplotlib.style.use('ggplot') # Look Pretty
 # If the above line throws an error, use plt.style.use('ggplot') instead
 
-student_dataset = pd.read_csv("/Datasets/students.data", index_col=0) student_dataset.plot.scatter(x='G1', y='G3')
+student_dataset = pd.read_csv("/Datasets/students.data", index_col=0) 
+student_dataset.plot.scatter(x='G1', y='G3')
 ```
 
 #### 3D plot
@@ -449,7 +450,15 @@ plt.show()
 
 ## Transforming Data
 
-### PCA
+### Principal Component Analysis (PCA)
+Principal Component Analysis (PCA), a transformation that attempts to convert your possibly correlated features into a set of linearly uncorrelated ones, is the first unsupervised learning algorithm you'll study.
+
+PCA falls into the group of **dimensionality reduction algorithms**. In many real-world datasets and the problems they represent, you aren't aware of what specifically needs to be measured to succinctly address the issue driving your data collection.
+If you have reason to believe your question has a simple answer, or that the features you've collected are actually many indirect observations of some inherent source you either cannot or do not know how to measure, then dimensionality reduction applies to your needs.
+PCA's approach to dimensionality reduction is to derive a set of degrees of freedom that can then be used to reproduce most of the variability of your data. It accesses your dataset's **covariance** structure directly using matrix calculations and eigenvectors to compute **the best unique features** that describe your samples.
+
+PCA ensures that each newly computed view (feature) is **orthogonal or linearly independent to all previously computed ones**, minimizing these overlaps. PCA also orders the features by importance, assuming that the **more variance expressed in a feature, the more important it is**.
+
 
 ### Isomap
 
