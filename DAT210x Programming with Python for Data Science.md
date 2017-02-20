@@ -266,7 +266,6 @@ df.interpolate(method='polynomial', order=2)
 ```python
 # Dropna()
 df = df.dropna(axis=0)  # remove any row with nans
-df = df.dropna(axis=1)  # remove any column with nans
 df = df.dropna(axis=0, thresh=4) # Drop any row that has at least 4 NON-NaNs within it
 
 # Drop row/column(s)
@@ -359,15 +358,108 @@ plt.show()
 
 
 ### Higher Dimensionality
+#### Parallel Coordinates
+Parallel coordinates are useful because polylines belonging to similar records tend to cluster together.
+To graph them with Pandas and MatPlotLib, you have to specify a feature to group by (it can be non-numeric) - like legend
+```python
+from sklearn.datasets import load_iris
+from pandas.tools.plotting import parallel_coordinates
+
+import pandas as pd
+import matplotlib.pyplot as plt
+import matplotlib
+
+# Look pretty...
+matplotlib.style.use('ggplot')
+# If the above line throws an error, use plt.style.use('ggplot') instead
+
+# Load up SKLearn's Iris Dataset into a Pandas Dataframe
+data = load_iris()
+df = pd.DataFrame(data.data, columns=data.feature_names) 
+
+df['target_names'] = [data.target_names[i] for i in data.target]
+
+# Parallel Coordinates Start Here:
+plt.figure()
+parallel_coordinates(df, 'target_names')
+plt.show()
+```
+Pandas' parallel coordinates interface is extremely easy to use, but use it with care. It only supports a **single scale** for all your axes. If you have some features that are on a small scale and others on a large scale, you'll have to deal with a compressed plot. For now, your only three options are to:
+* **Normalize** your features before charting them
+* Change the scale to a **log scale**
+* Or create **separate, multiple parallel coordinate charts**. Each one only plotting features with similar domains scales plotted
+
+#### Andrew's Curves
+An Andrews plot, also known as Andrews curve, helps you visualize higher dimensionality, multivariate data by plotting each of your dataset's observations as a curve. The feature values of the observation act as the coefficients of the curve, so observations with similar characteristics tend to group closer to each other. Due to this, Andrews curves have some use in outlier detection.
+```python
+from sklearn.datasets import load_iris
+from pandas.tools.plotting import andrews_curves
+
+import pandas as pd
+import matplotlib.pyplot as plt
+import matplotlib
+
+# Look pretty...
+matplotlib.style.use('ggplot')
+# If the above line throws an error, use plt.style.use('ggplot') instead
+
+# Load up SKLearn's Iris Dataset into a Pandas Dataframe
+data = load_iris()
+df = pd.DataFrame(data.data, columns=data.feature_names)
+df['target_names'] = [data.target_names[i] for i in data.target]
+
+# Andrews Curves Start Here:
+plt.figure()
+andrews_curves(df, 'target_names')
+plt.show()
+```
+One of the current weaknesses with the Pandas implementation (and this goes for Parallel Coordinates as well) is that every single observation is charted. In the MATLAB version, you can specify a quantile or probability distribution cutoff. 
+
+#### Imshow and Corr
+.imshow() generates an image based off of the normalized values stored in a matrix, or rectangular array of float64s. The properties of the generated image will depend on the dimensions and contents of the array passed in:
+* An [X, Y] shaped array will result in a grayscale image being generated
+* A [X, Y, 3] shaped array results in a full-color image: 1 channel for red, 1 for green, and 1 for blue
+* A [X, Y, 4] shaped array results in a full-color image as before with an extra channel for alpha
+
+Besides being a **straightforward way to display .PNG and other images**, the .imshow() method has quite a few other use cases. When you use the .corr() method on your dataset, Pandas calculates a correlation matrix for you that measures how close to being linear the relationship between any two features in your dataset are.
+```python 
+>>> df = pd.DataFrame(np.random.randn(1000, 5), columns=['a', 'b', 'c', 'd', 'e'])
+>>> df.corr()
+
+          a         b         c         d         e
+a  1.000000  0.007568  0.014746  0.027275 -0.029043
+b  0.007568  1.000000 -0.039130 -0.011612  0.082062
+c  0.014746 -0.039130  1.000000  0.025330 -0.028471
+d  0.027275 -0.011612  0.025330  1.000000 -0.002215
+e -0.029043  0.082062 -0.028471 -0.002215  1.000000
+
+import matplotlib.pyplot as plt
+
+plt.imshow(df.corr(), cmap=plt.cm.Blues, interpolation='nearest')
+plt.colorbar()
+tick_marks = [i for i in range(len(df.columns))]
+plt.xticks(tick_marks, df.columns, rotation='vertical')
+plt.yticks(tick_marks, df.columns)
+
+plt.show()
+```
+
+### [Dive Deeper](https://courses.edx.org/courses/course-v1:Microsoft+DAT210x+6T2016/courseware/dfb4bc13bab749ceb87191a9185cb111/94a6eca559df4cd482e379d5e9bcbad7/)
 
 
-
-### Dive Deeper
 ## Transforming Data
+
 ### PCA
+
 ### Isomap
+
 ### Data Cleansing
+
 ### Dive Deeper
+
+
+
+
 ## Data Modeling
 ### Clustering
 ### Spliting Data
