@@ -700,8 +700,36 @@ As for its outputs, the attributes you're interested in are:
 
 ## Data Modeling II
 ### SVC
-
+A visualization of SVM's kernel trick: what does higher-dimension mean?
 ![Animation on SVM kernel trick](https://courses.edx.org/asset-v1:Microsoft+DAT210x+4T2016+type@asset+block@svc_visualization.gif)
+
+One of the advantages of SVC is that once you've done the hard work of finding the hyperplane and its supporting vectors, the real job of classifying your samples is as simple as answering what side of the line is the point on? This makes SVC a classifier of choice for problems where **classification speed is more critical than training speed**.
+
+There may be cases where **number your dataset has more features than the number of samples**. Not all machine learning algorithms will be able to work with that, however such datasets aren't an issue for SVC. In fact, at least conceptually, if you use the kernel trick then at some point your data will almost assuredly be at a higher dimensionality than the number of features, depending on which kernel you use. And with the ability to use different kernel functions or even define your own, SVC will prove to be a very versatile classifier for you to have down in your machine learning arsenal.
+
+Lastly, SVC is **non-probabilistic**. That means the resulting classification is calculated based off of the geometry of your dataset, as opposed to probabilities of occurrences. Once you get to decision trees, you'll see an example of a classifier that works using probabilities and not the geometric nature of your dataset.
+
+```python
+>>> from sklearn.svm import SVC
+>>> model = SVC(kernel='linear')
+>>> model.fit(X, y) 
+SVC(C=1.0, cache_size=200, class_weight=None, coef0=0.0,
+  decision_function_shape=None, degree=3, gamma='auto', kernel='linear',
+  max_iter=-1, probability=False, random_state=None, shrinking=True,
+  tol=0.001, verbose=False)
+```
+Of the many configurable parameters for SciKit-Learn's svm.SVC class, the most important three in order are:
+* **kernel** Defines the type of kernel used with your classifier. The default is the radial basis function rbf, the most popular kernel used with support vector machines generally. SciKit-Learn also supports linear, poly, sigmoid, and precomputed kernels. You can also specify a user defined function to pre-compute the kernel matrix from your sample's feature space, which should be shaped [n_samples, n_samples].
+* **C** This is the penalty parameter for the error term. Do you want your SVC to never miss a single classification? Or is having a more generalized solution important to you? The lower your C value, the smoother and more generalized your decision boundary is going to be. But if you have a large C value, the classifier will attempt to do whatever is in its power to squiggle and wiggle between each sample to correctly classify it.
+* **gamma** This parameter's value is inversely proportional to the extent a single training sample's influence extends. Large gamma values result in each training sample having localized effects only. Smaller values result in each sample affecting a larger area. In essence, the gamma values dictate how pronounced your decision boundary is by varying the influence of your support vector samples.
+* **random_state** SVC and support vector machines are theoretically a deterministic algorithm, meaning if you re-run it against the same input, it should produce identical output each time. However SKLearn's SVC via libsvc implementation randomly shuffles your data during its probability estimation step. So to truly get deterministic execution, set a state seed.
+
+In terms of attributes, a few goodies are exposed here to:
+* support_ Contains an array of the indices belonging to the selected support vectors
+* support_vectors_ The actual samples chosen as the support vectors
+* intercept_ The constants of the decision function
+* dual_coef_ Each support vector's contribution to the decision function, on a per classification basis. This has similarities to the weights of linear regression
+
 ### Decision Trees
 ### Random Forest
 ### Dive Deeper
