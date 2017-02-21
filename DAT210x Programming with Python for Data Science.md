@@ -607,18 +607,101 @@ from sklearn.metrics import accuracy_score
 
 
 ### Classification - K-nearest Neighbors
+A basic streamline of any supervised learning:
+```python
+# Process:
+# Load a dataset into a dataframe
+X = pd.read_csv('data.set', index_col=0)
+
+# Do basic wrangling, but no transformations
+# ...
+
+# Immediately copy out the classification / label / class / answer column
+y = X['classification'].copy()
+X.drop(labels=['classification'], inplace=True, axis=1)
+
+# split data
+# ex:
+from sklearn import cross_validation
+data_train, data_test, label_train, label_test = cross_validation.train_test_split(X, y, test_size=0.33, random_state=1)
+
+
+# Feature scaling as necessary
+# ex: 
+from sklearn import preprocessing
+preprocessing.Normalizer().fit(data_train)
+data_train = preprocessing.Normalizer().transform(data_train)
+data_test = preprocessing.Normalizer().transform(data_test)
+
+# Transformation
+# ex: 
+from sklearn.decomposition import PCA
+pca = PCA(n_components=2)
+pca = pca.fit(data_train)
+data_train = pca.transform(data_train)
+data_test = pca.transform(data_test)
+
+
+# Machine Learning
+# ex:
+from sklearn.neighbors import KNeighborsClassifier
+knn = KNeighborsClassifier(n_neighbors=5)
+knn.fit(data_train, label_train) 
+
+# Evaluation
+# ex:
+knn.score(data_test, label_test)
+```
+K-nearest Neighbors code:
+```python
+>>> from sklearn.neighbors import KNeighborsClassifier
+>>> model = KNeighborsClassifier(n_neighbors=3)
+>>> model.fit(X_train, y_train) 
+KNeighborsClassifier(...)
+
+>>> # You can pass in a dframe or an ndarray
+>>> model.predict([[1.1]])
+
+>>> model.predict_proba([[0.9]])
+[[ 0.66666667  0.33333333]
+```
+Something to note:
+As with all algorithms dependent on distance measures, it is also sensitive to feature scaling. K-Neighbors is also sensitive to perturbations and the local structure of your dataset, particularly at lower "K" values.
+with large "K" values, you have to be more cautious of the overall class distribution of your samples. If 30% of your dataset is labeled A and 70% of labeled B, with high enough "K" values, you might experience K-Neighbors unjustly giving preference to B labeling, even in those localities of your dataset that should be properly classified as A.
+
+#### A demo:
+[source code](https://github.com/yang0339/Microsoft-Professional-Program-Learning-Materials/blob/master/DAT210x%20Programming%20with%20Python%20for%20Data%20Science/knn.py) and [data file](https://github.com/yang0339/Microsoft-Professional-Program-Learning-Materials/blob/master/DAT210x%20Programming%20with%20Python%20for%20Data%20Science/wheat.data)
+![knn_visualization](https://github.com/yang0339/Microsoft-Professional-Program-Learning-Materials/blob/master/DAT210x%20Programming%20with%20Python%20for%20Data%20Science/knn.png)
 
 
 ### Regression
+```python
+>>> from sklearn import linear_model
+>>> model = linear_model.LinearRegression()
+>>> model.fit(X_train, y_train)
 
+LinearRegression(copy_X=True, fit_intercept=True, n_jobs=1, normalize=False)
 
+>>> # R2 Score
+>>> model.score(X_test, y_test)
+153.244939109
 
-### Dive Deeper
+>>> # Sum of Squared Distances
+>>> np.sum(model.predict(X_test) - y_test) ** 2)
+5465.15
+```
+As for its outputs, the attributes you're interested in are:
+* intercept_ the scalar constant offset value
+* coef_ an array of weights, one per input feature, which will act as a scaling factor
+
+### [Dive Deeper](https://courses.edx.org/courses/course-v1:Microsoft+DAT210x+6T2016/courseware/57010625975a485ab1acb37592255b3f/83d48871f944443592c39dfb5326fc78/)
 
 
 
 ## Data Modeling II
 ### SVC
+
+![Animation on SVM kernel trick](https://courses.edx.org/asset-v1:Microsoft+DAT210x+4T2016+type@asset+block@svc_visualization.gif)
 ### Decision Trees
 ### Random Forest
 ### Dive Deeper
