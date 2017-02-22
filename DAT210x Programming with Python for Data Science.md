@@ -789,11 +789,12 @@ Some of the new, optional parameters you can pass in while instantiating your mo
 ## Evaluating Data
 
 
-### Confusion
+### Three CheatSheets on Machine Learning
 [microsoft-machine-learning-algorithm-cheat-sheet](https://github.com/yang0339/Microsoft-Professional-Program-Learning-Materials/blob/master/DAT210x%20Programming%20with%20Python%20for%20Data%20Science/microsoft-machine-learning-algorithm-cheat-sheet-v6.pdf)
 [SKLEARN cheatsheet](http://scikit-learn.org/stable/tutorial/machine_learning_map/index.html)
+[Emanuel Ferm Cheat Sheet](http://eferm.com/wp-content/uploads/2011/05/cheat3.pdf)
 
-#### Confusion Matrix
+### Confusion Matrix
 ```python
 >>> import sklearn.metrics as metrics
 >>> y_true = [1, 1, 2, 2, 3, 3]  # Actual, observed testing dataset values
@@ -827,8 +828,144 @@ Actual Monkey |	0 |	1 |	1
 
 ### Cross Validation
 
+#### Scoring Metrics
+```python
+>>> import sklearn.metrics as metrics
+>>> y_true = [1, 1, 2, 2, 3, 3]  # Actual, observed testing datset values
+>>> y_pred = [1, 1, 1, 3, 2, 3]  # Predicted values from your model
+
+>>> metrics.accuracy_score(y_true, y_pred)
+0.5
+>>> metrics.accuracy_score(y_true, y_pred, normalize=False)
+3
+
+# Recall
+>>> metrics.recall_score(y_true, y_pred, average='weighted')
+0.5
+>>> metrics.recall_score(y_true, y_pred, average=None)
+array([ 1. ,  0. ,  0.5])
+
+# Precision
+>>> metrics.precision_score(y_true, y_pred, average='weighted')
+0.38888888888888884
+>>> metrics.precision_score(y_true, y_pred, average=None)
+array([ 0.66666667,  0.        ,  0.5       ])
+
+# F1
+>>> metrics.f1_score(y_true, y_pred, average='weighted')
+0.43333333333333335
+>>> metrics.f1_score(y_true, y_pred, average=None)
+array([ 0.8,  0. ,  0.5])
+
+# Full Report
+>>> target_names = ['Fruit 1', 'Fruit 2', 'Fruit 3']
+>>> metrics.classification_report(y_true, y_pred, target_names=target_names)
+
+
+             precision    recall  f1-score   support
+
+    Fruit 1       0.67      1.00      0.80         2
+    Fruit 2       0.00      0.00      0.00         2
+    Fruit 3       0.50      0.50      0.50         2
+
+avg / total       0.39      0.50      0.43         6
+```
+
+#### Cross Validation
+```python
+>>> from sklearn.cross_validation import train_test_split
+>>> X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.5, random_state=0)
+
+>>> # Test how well your model can recall its training data:
+>>> model.fit(X_train, y_train).score(X_train, y_train)
+0.943262278808
+
+>>> # Test how well your model can predict unseen data:
+>>> model.fit(X_test, y_test).score(X_test, y_test)
+0.894716422024
+
+
+# 10-Fold Cross Validation on your training data
+>>> from sklearn import cross_validation as cval
+>>> cval.cross_val_score(model, X_train, y_train, cv=10)
+array([ 0.93513514,  0.99453552,  0.97237569,  0.98888889,  0.96089385,
+        0.98882682,  0.99441341,  0.98876404,  0.97175141,  0.96590909])
+
+>>> cval.cross_val_score(model, X_train, y_train, cv=10).mean()
+0.97614938602520218
+```
+In the wild, the **best process** to use depending on how many samples you have at your disposal and the machine learning algorithms you are using, is either of the following:
+
+1. Split your data into **training, validation, and testing sets**.
+2. Setup a pipeline, and fit it with your **training set**
+3. Access the accuracy of its output using your **validation set**
+4. Fine tune this accuracy by **adjusting the hyperparamters** of your pipeline
+5. when you're comfortable with its accuracy, finally evaluate your pipeline with the **testing set**
+
 
 ### Power Tuning
+SciKit-Learn offers you a systematic way of doing that automatically called **GridSearchCV**. When you were using the nested for-loop approach, we mentioned that was a very naive method. GridSearchCV takes care of your parameter tuning and also tacks on end-to-end cross validation. This results in more precisely tuned parameter than depending on simple model accuracy scores, and is why the algorithm is name Grid-Search-CV.
 
+```python
+>>> from sklearn import svm, grid_search, datasets
 
-### Dive Deeper
+>>> iris = datasets.load_iris()
+>>> parameters = {'kernel':('linear', 'rbf'), 'C':[1, 5, 10]}
+>>> model = svm.SVC()
+
+>>> classifier = grid_search.GridSearchCV(model, parameters)
+>>> classifier.fit(iris.data, iris.target)
+GridSearchCV(cv=None, error_score='raise',
+       estimator=SVC(C=1.0, cache_size=200, class_weight=None, coef0=0.0,
+  decision_function_shape=None, degree=3, gamma='auto', kernel='rbf',
+  max_iter=-1, probability=False, random_state=None, shrinking=True,
+  tol=0.001, verbose=False),
+       fit_params={}, iid=True, n_jobs=1,
+       param_grid={'kernel': ('linear', 'rbf'), 'C': [1, 5, 10]},
+       pre_dispatch='2*n_jobs', refit=True, scoring=None, verbose=0)
+```
+
+In addition to explicitly defining the parameters you want tested, you can also use randomized parameter optimization with SciKit-Learn's **RandomizedSearchCV** class. The semantics are a bit different here. First, instead of passing a list of grid objects (with GridSearchCV, you can actually perform multiple grid optimizations, consecutively), this time you pass in a your parameters as a single dictionary that holds either possible, discrete parameter values or distribution over them. [SciPy's Statistics module](https://docs.scipy.org/doc/scipy/reference/stats.html) have many such functions you can use to create continuous, discrete, and multivariate type distributions, such as expon, gamma, uniform, randin and many more:
+
+```python
+>>> parameter_dist = {
+  'C': scipy.stats.expon(scale=100),
+  'kernel': ['linear'],
+  'gamma': scipy.stats.expon(scale=.1),
+}
+
+>>> classifier = grid_search.RandomizedSearchCV(model, parameter_dist)
+>>> classifier.fit(iris.data, iris.target)
+
+RandomizedSearchCV(cv=None, error_score='raise',
+          estimator=SVC(C=1.0, cache_size=200, class_weight=None, coef0=0.0,
+  decision_function_shape=None, degree=3, gamma='auto', kernel='rbf',
+  max_iter=-1, probability=False, random_state=None, shrinking=True,
+  tol=0.001, verbose=False),
+          fit_params={}, iid=True, n_iter=10, n_jobs=1,
+          param_distributions={'kernel': ['linear'], 'C': <scipy.stats._distn_infrastructure.rv_frozen object at 0x110345c50>, 'gamma': <scipy.stats._distn_infrastructure.rv_frozen object at 0x110345d90>},
+          pre_dispatch='2*n_jobs', random_state=None, refit=True,
+          scoring=None, verbose=0)
+```
+
+#### Pipelining
+
+SciKit-Learn has created a pipelining class. It wraps around your entire data analysis pipeline from start to finish, and allows you to interact with the pipeline as if it were a single white-box, configurable estimator.
+
+If you don't want to encounter errors, there are a few rules you must abide by while using SciKit-Learn's pipeline:
+* Every intermediary model, or step within the pipeline must be a transformer. That means its class must implement both the **.fit()** and the **.transform()** methods. This is rather important, as the output from each step will serve as the input to the subsequent step! Every algorithm you've learned about in this class implements .fit() so you're good there, but not all of them implement .transform(). Be sure to take a look at the SciKit-Learn documentation for each algorithm to learn if it qualifier as a transformer, and make note of that on your course map.
+* The very last step in your analysis pipeline only needs to implement the **.fit()** method, since it will not be feeding data into another step
+```python
+>>> from sklearn.pipeline import Pipeline
+
+>>> svc = svm.SVC(kernel='linear')
+>>> pca = RandomizedPCA()
+
+>>> pipeline = Pipeline([
+  ('pca', pca),
+  ('svc', svc)
+])
+>>> pipeline.set_params(pca__n_components=5, svc__C=1, svc__gamma=0.0001)
+>>> pipeline.fit(X, y)
+```
+### [Dive Deeper](https://courses.edx.org/courses/course-v1:Microsoft+DAT210x+6T2016/courseware/fbe3b24442e840da93cbfb06b02fc078/1913e921dd5d4e7984077931a164f7d2/)
