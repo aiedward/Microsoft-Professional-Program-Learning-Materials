@@ -730,11 +730,105 @@ In terms of attributes, a few goodies are exposed here to:
 * intercept_ The constants of the decision function
 * dual_coef_ Each support vector's contribution to the decision function, on a per classification basis. This has similarities to the weights of linear regression
 
+An [example](https://github.com/yang0339/Microsoft-Professional-Program-Learning-Materials/blob/master/DAT210x%20Programming%20with%20Python%20for%20Data%20Science/KNeightbor-SVC.py) on comparison of K-Neighbors and SVC, and data source file: [wheat.data](https://github.com/yang0339/Microsoft-Professional-Program-Learning-Materials/blob/master/DAT210x%20Programming%20with%20Python%20for%20Data%20Science/wheat.data)
+![svc-kneightbor visualization](https://github.com/yang0339/Microsoft-Professional-Program-Learning-Materials/blob/master/DAT210x%20Programming%20with%20Python%20for%20Data%20Science/KNeightbor-SVC.jpg)
+
 ### Decision Trees
+```python
+>>> from sklearn import tree
+>>> model = tree.DecisionTreeClassifier(max_depth=9, criterion="entropy")
+>>> model.fit(X,y)
+DecisionTreeClassifier(class_weight=None, criterion='entropy', max_depth=9,
+            max_features=None, max_leaf_nodes=None, min_samples_leaf=1,
+            min_samples_split=2, min_weight_fraction_leaf=0.0,
+            presort=False, random_state=None, splitter='best')
+
+# .DOT files can be rendered to .PNGs, if you've already `brew install graphviz`.
+>>> tree.export_graphviz(model.tree_, out_file='tree.dot', feature_names=X.columns)
+
+>>> from subprocess import call
+>>> call(['dot', '-T', 'png', 'tree.dot', '-o', 'tree.png'])
+```
+* **criterion** By default, SciKit-Learn uses Gini, which is an impurity rating. Alternatively, you could also make use of information gain, or entropy instead.
+* **splitter** Lets you control of the algorithm chooses the best split or not. We'll discuss why that's importance once you move to random forest classifier.
+* **max_features** One of the possible splitter options for splitter above is called 'best'. SciKit-Learn runs a bunch of tests on your features to figure out which mechanism should be used when searching for the best split. This parameter limits the number of features to consider while doing this.
+* get back a **feature_importances** vector that stores, in order of importance, the features that used to make the labeling decisions of your tree.
+
 ### Random Forest
-### Dive Deeper
+Some of the advantages decision trees offer include:
+
+* Unlike SVMs, the accuracy of a DTree doesn't decrease when you include irrelevant features
+* Unlike KNeighbors, both training and predicting with a DTree are relatively fast operations
+* Unlike PCA / IsoMap, DTrees are invariant to monotonic feature scaling and transformations
+* Moreover, a trained DTree model is readily human inspectable
+
+```python
+>>> from sklearn.ensemble import RandomForestClassifier
+>>> model = RandomForestClassifier(n_estimators=10, oob_score=True)
+>>> model.fit(X, y)
+RandomForestClassifier(bootstrap=True, class_weight=None, criterion='gini',
+            max_depth=None, max_features='auto', max_leaf_nodes=None,
+            min_samples_leaf=1, min_samples_split=2,
+            min_weight_fraction_leaf=0.0, n_estimators=10, n_jobs=1,
+            oob_score=True, random_state=None, verbose=0, warm_start=False)
+            
+>>> print model.oob_score_
+0.789925345
+```
+Some of the new, optional parameters you can pass in while instantiating your model include:
+
+* **n_estimators** Controls the density of the forest ensemble.
+* **bootstrap** Also known as bagging. Every trained tree is grown using an independently drawn subset of your input data. As such, training samples not used for training an individual tree are considered out-of-bag for that one tree.
+* **obb_score** Controls whether to use out-of-bag samples to estimate a generalization error. By default, this is turned off, with the assumption that you'll be using random forest just like any other SciKit-Learn estimator, and handling the splitting of your training/testing data manually, along with its scoring.
+
+
+### [Dive Deeper](https://courses.edx.org/courses/course-v1:Microsoft+DAT210x+6T2016/courseware/a936135a7c484ad7a1e04da1280c13c1/1521c056ae8e4245866506e0b1dcad07/)
+
+
+
 ## Evaluating Data
+
+
 ### Confusion
+[microsoft-machine-learning-algorithm-cheat-sheet](https://github.com/yang0339/Microsoft-Professional-Program-Learning-Materials/blob/master/DAT210x%20Programming%20with%20Python%20for%20Data%20Science/microsoft-machine-learning-algorithm-cheat-sheet-v6.pdf)
+[SKLEARN cheatsheet](http://scikit-learn.org/stable/tutorial/machine_learning_map/index.html)
+
+#### Confusion Matrix
+```python
+>>> import sklearn.metrics as metrics
+>>> y_true = [1, 1, 2, 2, 3, 3]  # Actual, observed testing dataset values
+>>> y_pred = [1, 1, 1, 3, 2, 3]  # Predicted values from your model
+
+>>> metrics.confusion_matrix(y_true, y_pred)
+array([[2, 0, 0],
+       [1, 0, 1],
+       [0, 1, 1]])
+
+# One last way you can look at this data is through using an .imshow() visualization plot:
+>>> import matplotlib.pyplot as plt
+
+>>> columns = ['Cat', 'Dog', 'Monkey']
+>>> confusion = metrics.confusion_matrix(y_true, y_pred)
+
+>>> plt.imshow(confusion, cmap=plt.cm.Blues, interpolation='nearest')
+>>> plt.xticks([0,1,2], columns, rotation='vertical')
+>>> plt.yticks([0,1,2], columns)
+>>> plt.colorbar()
+
+>>> plt.show()
+```
+--- | Predicted Cat |	Predicted Dog |	Predicted Monkey
+--- | --- | --- | --- 
+Actual Cat |	2 |	0 |	0
+Actual Dog	| 1 |	0 |	1
+Actual Monkey |	0 |	1 |	1
+
+![a demo on confusion matrix visualization](https://courses.edx.org/asset-v1:Microsoft+DAT210x+4T2016+type@asset+block@confusion.png)
+
 ### Cross Validation
+
+
 ### Power Tuning
+
+
 ### Dive Deeper
