@@ -57,7 +57,7 @@ Parameters to tune include:
 * Split Data percentage
 * CROSS-VALIDATION to see the generalization of model
 
-[this link](http://money.usnews.com/money/personal-finance/articles/2016-03-17/beyond-credit-scores-7-factors-that-affect-a-loan-application) shows the general guidelines for accessing a person's credibility for loan application. Some take away may be:
+[THIS LINK](http://money.usnews.com/money/personal-finance/articles/2016-03-17/beyond-credit-scores-7-factors-that-affect-a-loan-application) shows the general guidelines for accessing a person's credibility for loan application. Some take away may be:
 * Debt-to-income ratio: combine "annual income" with "monthly debt"
 * Employment history: may think about reverting back "years of current work"
 * Recent payment history: "month since last delinquency" could be crucial, but should think about how to tackle the NaNs.
