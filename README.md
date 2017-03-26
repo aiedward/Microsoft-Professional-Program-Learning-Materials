@@ -2,6 +2,7 @@
 Learning Material Hub for Microsoft Professional Program (MPP)
 
 <hr/>
+
 ## Course Map:
 
 ### [DAT101x: Data Science Orientation](https://courses.edx.org/courses/course-v1:Microsoft+DAT101x+5T2016/info)
@@ -33,4 +34,5 @@ Learning Material Hub for Microsoft Professional Program (MPP)
 
 
 <hr/>
+
 ## [check your course status and certificates there](https://academy.microsoft.com/en-us/dashboard)
