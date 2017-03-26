@@ -8,11 +8,18 @@ Some theoretical effects on tuning parameters in boosted decision tree:
 * [link: Azure Decision Tree Parameter Guide](https://msdn.microsoft.com/en-us/library/azure/dn906025.aspx)
 
 ## Update on left side of models:
+* Created a separate experiement suffixed to be: Cross Validation & Testing
 * Deleted Decision Forest. Make a copy of Boosted Tree to tune the parameter and make comparison.
 * Changed the experimental group parameter to:
 	* Min-sample-per-leaf node: 2,8,32,**64**
 	* Max-leaves-per-tree: from 1,10,50 to **50,100,200,500,1000**
 * Added a cross validation model: result shows that it generalized pretty well across folds.
+
+How the revised model AUC looks:
+
+
+
+How Cross Validation Look:
 
 
 #### Update: 26-Feb-2017
