@@ -1,4 +1,19 @@
 # DAT102x: Data Science Professional Project
+#### Update: 26-Mar-2017
+## Tune Parameter to Avoid Overfitting
+
+Some theoretical effects on tuning parameters in boosted decision tree:
+* **Min-sample-per-leaf node**: **1 by default**, which would naturally make the tree overfit and learn from the all the data points, **including outliers**. We increase it to about **~1%** of the data points to stop the tree from prematurely classifying these outliers. [link: a cortana gallery on parameter tuning for decision forest](https://gallery.cortanaintelligence.com/Experiment/Evaluating-and-Parameter-Tuning-a-Decision-Tree-Model-1)
+* **Max-leaves-per-tree**: By increasing this value, you potentially increase the size of the tree and get better precision, at the risk of overfitting and longer training time. Default: **2,8,32,128**, while 128 seems to large.
+* [link: Azure Decision Tree Parameter Guide](https://msdn.microsoft.com/en-us/library/azure/dn906025.aspx)
+
+## Update on left side of models:
+* Deleted Decision Forest. Make a copy of Boosted Tree to tune the parameter and make comparison.
+* Changed the experimental group parameter to:
+	* Min-sample-per-leaf node: 2,8,32,**64**
+	* Max-leaves-per-tree: from 1,10,50 to **50,100,200,500,1000**
+* Added a cross validation model: result shows that it generalized pretty well across folds.
+
 
 #### Update: 26-Feb-2017
 ## Kick Off
@@ -48,7 +63,8 @@ Observations:
 
 
 <hr>
-### What to do Next
+
+## What to do Next (all done as before Mar-26 Update)
 When competition is launched, deploy as web service to check how much overfitted the model is and change accordingly.
 Parameters to tune include:
 * Decision Tree Hyperparameters (Parameter range (train model) + parameter sweeping mode (Tune model hyperparameter))
@@ -57,6 +73,7 @@ Parameters to tune include:
 * Split Data percentage
 * CROSS-VALIDATION to see the generalization of model
 
+## Some Additional Wranglings that could be done:
 [THIS LINK](http://money.usnews.com/money/personal-finance/articles/2016-03-17/beyond-credit-scores-7-factors-that-affect-a-loan-application) shows the general guidelines for accessing a person's credibility for loan application. Some take away may be:
 * Debt-to-income ratio: combine "annual income" with "monthly debt"
 * Employment history: may think about reverting back "years of current work"
