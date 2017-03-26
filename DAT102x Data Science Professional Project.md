@@ -30,6 +30,8 @@ How Cross Validation Look:
 
 ![Cross validation result_mar26](https://github.com/yang0339/Microsoft-Professional-Program-Learning-Materials/blob/master/DAT102x%20Data%20Science%20Professional%20Project/left_branch_Model_ValidationResult.JPG)
 
+<hr>
+
 #### Update: 26-Feb-2017
 ## Kick Off
 
