@@ -15,13 +15,19 @@ Some theoretical effects on tuning parameters in boosted decision tree:
 	* Max-leaves-per-tree: from 1,10,50 to **50,100,200,500,1000**
 * Added a cross validation model: result shows that it generalized pretty well across folds.
 
+### Overfitting problem is alleviated. However, we need to test it out on different SMOTE configuration and also with PCA.
+### Will wait until Apr.1 when real challenge is started.
+
 How the revised model AUC looks:
+
 ![AUC_parameter_tuned_mar26](https://github.com/yang0339/Microsoft-Professional-Program-Learning-Materials/blob/master/DAT102x%20Data%20Science%20Professional%20Project/left_branch_Model_Validation%26Testing.JPG)
 
 How Evaluation Looks: 
+
 ![Evaluation_parameter_tuned_mar26](https://github.com/yang0339/Microsoft-Professional-Program-Learning-Materials/blob/master/DAT102x%20Data%20Science%20Professional%20Project/left_model_evaluation_Validation%26Testing.JPG)
 
 How Cross Validation Look:
+
 ![Cross validation result_mar26](https://github.com/yang0339/Microsoft-Professional-Program-Learning-Materials/blob/master/DAT102x%20Data%20Science%20Professional%20Project/left_branch_Model_ValidationResult.JPG)
 
 #### Update: 26-Feb-2017
