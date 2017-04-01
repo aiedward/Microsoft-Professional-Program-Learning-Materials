@@ -24,11 +24,11 @@ How the revised model AUC looks:
 
 How Evaluation Looks: 
 
-![Evaluation_parameter_tuned_mar26](https://github.com/yang0339/Microsoft-Professional-Program-Learning-Materials/blob/master/DAT102x%20Data%20Science%20Professional%20Project/left_model_evaluation_Validation%26Testing.JPG)
+![Evaluation_parameter_tuned_mar26](https://github.com/yang0339/Microsoft-Professional-Program-Learning-Materials/blob/master/Cortana%20Challenge%20Loan%20Credit%202016/screenshots/left_model_evaluation_Validation%26Testing.JPG)
 
 How Cross Validation Look:
 
-![Cross validation result_mar26](https://github.com/yang0339/Microsoft-Professional-Program-Learning-Materials/blob/master/DAT102x%20Data%20Science%20Professional%20Project/left_branch_Model_ValidationResult.JPG)
+![Cross validation result_mar26](https://github.com/yang0339/Microsoft-Professional-Program-Learning-Materials/blob/master/Cortana%20Challenge%20Loan%20Credit%202016/screenshots/left_branch_Model_ValidationResult.JPG)
 
 <hr>
 
@@ -36,7 +36,7 @@ How Cross Validation Look:
 ## Kick Off
 
 #### The complete map for the current model:
-![complete model](https://github.com/yang0339/Microsoft-Professional-Program-Learning-Materials/blob/master/DAT102x%20Data%20Science%20Professional%20Project/All%20Process%20View.png)
+![complete model](https://github.com/yang0339/Microsoft-Professional-Program-Learning-Materials/blob/master/Cortana%20Challenge%20Loan%20Credit%202016/screenshots/All%20Process%20View.png)
 
 Basically, two part: preprocessing + modeling. While modeling part contains several experiment on:
 * SMOTE percentage (100% vs. 200%)
@@ -44,7 +44,7 @@ Basically, two part: preprocessing + modeling. While modeling part contains seve
 * PCA vs. No PCA
 
 #### The pre-processing part:
-![preprocessing](https://github.com/yang0339/Microsoft-Professional-Program-Learning-Materials/blob/master/DAT102x%20Data%20Science%20Professional%20Project/Pre-processing.png)
+![preprocessing](https://github.com/yang0339/Microsoft-Professional-Program-Learning-Materials/blob/master/Cortana%20Challenge%20Loan%20Credit%202016/screenshots/Pre-processing.png)
 
 * Removes col with too many NaNs: Months since last delinquent, Years in current job
 * Removes col that prove useless using "Permutation Feature Importance": Bankrupcies & Tax Liens
@@ -59,7 +59,7 @@ Basically, two part: preprocessing + modeling. While modeling part contains seve
 * Normalization
 
 #### The left branch: Model Comparison
-![left branch](https://github.com/yang0339/Microsoft-Professional-Program-Learning-Materials/blob/master/DAT102x%20Data%20Science%20Professional%20Project/left_branch_Model_Exploration.png)
+![left branch](https://github.com/yang0339/Microsoft-Professional-Program-Learning-Materials/blob/master/Cortana%20Challenge%20Loan%20Credit%202016/screenshots/left_branch_Model_Exploration.png)
 
 Observation:
 * Boosted Decision Tree generally performed better.
@@ -67,16 +67,16 @@ Observation:
   * Random Sweep gives over-fitted training model
   * Sweep thorugh entire grid give perfect model for the metric choose (say choose Recall), but tend to generalize poorly.
   
-![left model evaluation](https://github.com/yang0339/Microsoft-Professional-Program-Learning-Materials/blob/master/DAT102x%20Data%20Science%20Professional%20Project/left_model_evaluation.jpg)
+![left model evaluation](https://github.com/yang0339/Microsoft-Professional-Program-Learning-Materials/blob/master/Cortana%20Challenge%20Loan%20Credit%202016/screenshots/left_model_evaluation.jpg)
 
 #### The right branch: SMOTE change & PCA
-![right branch](https://github.com/yang0339/Microsoft-Professional-Program-Learning-Materials/blob/master/DAT102x%20Data%20Science%20Professional%20Project/right_branch_Vary_SMOTE_and_PCA.png)
+![right branch](https://github.com/yang0339/Microsoft-Professional-Program-Learning-Materials/blob/master/Cortana%20Challenge%20Loan%20Credit%202016/screenshots/right_branch_Vary_SMOTE_and_PCA.png)
 
 Observations:
 * SMOTE percentage decreased from 200% to 100%, without PCA version generalized better
 * PCA configured 4 features out of 8, and the accuracy score is ridiculous.
 
-![right model evaluation](https://github.com/yang0339/Microsoft-Professional-Program-Learning-Materials/blob/master/DAT102x%20Data%20Science%20Professional%20Project/right_model_evaluation.jpg)
+![right model evaluation](https://github.com/yang0339/Microsoft-Professional-Program-Learning-Materials/blob/master/Cortana%20Challenge%20Loan%20Credit%202016/screenshots/right_model_evaluation.jpg)
 
 
 <hr>
