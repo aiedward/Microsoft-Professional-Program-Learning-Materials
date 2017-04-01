@@ -16,7 +16,6 @@ Some theoretical effects on tuning parameters in boosted decision tree:
 * Added a cross validation model: result shows that it generalized pretty well across folds.
 
 ### Overfitting problem is alleviated. However, we need to test it out on different SMOTE configuration and also with PCA.
-### Will wait until Apr.1 when real challenge is started.
 
 How the revised model AUC looks:
 
