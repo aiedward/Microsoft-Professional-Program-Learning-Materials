@@ -14,7 +14,8 @@ Learning Material Hub for Microsoft Professional Program (MPP)
 ### [DAT203.2x: Principles of Machine Learning](https://courses.edx.org/courses/course-v1:Microsoft+DAT203.2x+6T2016/info)
 ### [DAT210x: Programming with Python for Data Science](https://courses.edx.org/courses/course-v1:Microsoft+DAT210x+6T2016/info) <br/>or [Introduction to R for Data Science](https://www.edx.org/course/introduction-r-data-science-microsoft-dat204x-3) (HAVEN'T LEARNT)
 ### [DAT203.3x: Applied Machine Learning](https://courses.edx.org/courses/course-v1:Microsoft+DAT203.3x+1T2017/info) <br/>or [Implementing Predictive Solutions with Spark in HDInsight](https://www.edx.org/course/implementing-predictive-solutions-spark-microsoft-dat202-3x-2) (HAVEN'T LEARNT) <br/>or [Developing Intelligent Applications](https://www.edx.org/course/developing-intelligent-apps-bots-microsoft-dat211x) (HAVEN'T LEARNT) 
-### [DAT102x: Data Science Professional Project](https://courses.edx.org/courses/course-v1:Microsoft+DAT102x+1T2017/info)
+### [DAT102x: Data Science Professional Project Dec 2016](https://courses.edx.org/courses/course-v1:Microsoft+DAT102x+1T2017/info)
+### [DAT102x: Data Science Professional Project Apr 2017](https://courses.edx.org/courses/course-v1:Microsoft+DAT102x+2T2017/info)
 
 <hr/>
 
