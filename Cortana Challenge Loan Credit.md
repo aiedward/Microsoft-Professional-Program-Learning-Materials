@@ -23,7 +23,7 @@ How the revised model AUC looks:
 
 How Evaluation Looks: 
 
-![Evaluation_parameter_tuned_mar26](https://github.com/yang0339/Microsoft-Professional-Program-Learning-Materials/blob/master/Cortana%20Challenge%20Loan%20Credit%202016/screenshots/left_branch_Model_ValidationResult.JPG)
+![Evaluation_parameter_tuned_mar26](https://github.com/yang0339/Microsoft-Professional-Program-Learning-Materials/blob/master/Cortana%20Challenge%20Loan%20Credit%202016/screenshots/left_model_evaluation_Validation%26Testing.JPG)
 
 How Cross Validation Look:
 
