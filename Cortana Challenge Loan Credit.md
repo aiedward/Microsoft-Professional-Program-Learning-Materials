@@ -2,8 +2,8 @@
 
 #### Update 01-Apr-2017 (FINAL)
 Peek into the model: 
-* basic version (as of 26-Feb) [link](https://studio.azureml.net/Home/ViewWorkspaceCached/119ce0ee2f2d4e61b8ca08c17d603119?#Workspaces/Experiments/Experiment/119ce0ee2f2d4e61b8ca08c17d603119.f-id.1c256f5e7f8f44e49e9a7d00e6b077ab/ViewExperiment)
-* revised version (as of 26-Mar) [link](https://studio.azureml.net/Home/ViewWorkspaceCached/119ce0ee2f2d4e61b8ca08c17d603119?#Workspaces/Experiments/Experiment/119ce0ee2f2d4e61b8ca08c17d603119.f-id.a36318439dc74ab0b5c553c58506d897/ViewExperiment)
+* basic version (as of 26-Feb): [link](https://studio.azureml.net/Home/ViewWorkspaceCached/119ce0ee2f2d4e61b8ca08c17d603119?#Workspaces/Experiments/Experiment/119ce0ee2f2d4e61b8ca08c17d603119.f-id.1c256f5e7f8f44e49e9a7d00e6b077ab/ViewExperiment)
+* revised version (as of 26-Mar): [link](https://studio.azureml.net/Home/ViewWorkspaceCached/119ce0ee2f2d4e61b8ca08c17d603119?#Workspaces/Experiments/Experiment/119ce0ee2f2d4e61b8ca08c17d603119.f-id.a36318439dc74ab0b5c553c58506d897/ViewExperiment)
 
 #### Update: 26-Mar-2017
 ## Tune Parameter to Avoid Overfitting
