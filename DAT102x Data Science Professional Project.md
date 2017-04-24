@@ -26,6 +26,8 @@ This project analyze the dataset from a global retailer, utilizing personal part
   * Categorize data
   * Build Regression Model
 
+### Azure Work: [link](https://studio.azureml.net/Home/ViewWorkspaceCached/119ce0ee2f2d4e61b8ca08c17d603119?#Workspaces/Experiments/Experiment/119ce0ee2f2d4e61b8ca08c17d603119.f-id.1a0b8989efb74a10b6f595698a8021ea/ViewExperiment)
+
 ## How to inteprete Negative Feature Importance
 A negative score is returned when a random permutation of a feature’s values results in a better performance metric (higher accuracy or a lower error, etc..) compared to the performance before a permutation is applied.
 
