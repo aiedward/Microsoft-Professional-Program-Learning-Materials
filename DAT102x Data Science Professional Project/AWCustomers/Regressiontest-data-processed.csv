@@ -1,0 +1,26 @@
+,CountryRegionName,Occupation,Gender,MaritalStatus,HomeOwnerFlag,NumberChildrenAtHome,TotalChildren,YearlyIncome,age
+0,Australia,Professional,M,S,1,0,0,135915,30.0
+1,United Kingdom,Professional,M,S,1,0,0,137732,27.0
+2,Canada,Professional,M,M,1,0,0,135404,24.0
+3,Germany,Management,F,M,1,0,0,104040,23.0
+4,France,Professional,F,S,1,0,0,129319,27.0
+5,Australia,Management,F,M,1,1,2,111985,24.0
+6,United States,Professional,F,M,1,0,0,136717,34.0
+7,United Kingdom,Management,M,M,1,0,2,113395,54.0
+8,Canada,Management,F,S,1,0,0,106191,31.0
+9,United States,Skilled Manual,M,M,1,1,1,56412,40.0
+10,United States,Management,M,M,1,2,2,110926,27.0
+11,United States,Professional,F,M,1,0,1,132424,32.0
+12,Canada,Management,M,M,1,0,0,109408,22.0
+13,Australia,Clerical,M,S,0,0,0,78083,17.0
+14,Canada,Professional,F,S,1,0,0,135288,30.0
+15,United States,Skilled Manual,M,S,1,0,0,58359,39.0
+16,United States,Management,M,M,1,1,2,112692,41.0
+17,United States,Clerical,F,S,1,0,0,80506,36.0
+18,Germany,Clerical,F,M,1,1,1,78813,43.0
+19,France,Skilled Manual,M,S,1,0,0,55332,46.0
+20,United States,Manual,M,S,0,0,0,36385,40.0
+21,United States,Management,F,M,0,0,0,107827,18.0
+22,United States,Management,M,S,1,0,0,103449,29.0
+23,United States,Management,F,M,1,2,2,104116,47.0
+24,Germany,Management,F,M,1,1,1,109156,31.0

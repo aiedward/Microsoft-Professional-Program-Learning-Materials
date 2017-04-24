@@ -1,0 +1,51 @@
+,Education,Occupation,Gender,MaritalStatus,HomeOwnerFlag,NumberCarsOwned,NumberChildrenAtHome,TotalChildren,YearlyIncome,age
+0,High School,Skilled Manual,M,M,1,2,2,2,10.9348910915,46.0
+1,Partial College,Skilled Manual,F,S,1,0,0,0,11.0276863631,39.0
+2,Partial College,Clerical,M,M,1,3,0,2,11.3339542894,57.0
+3,Graduate Degree,Professional,F,S,1,2,0,0,11.779519234,27.0
+4,Graduate Degree,Professional,M,S,1,2,0,0,11.8197849693,30.0
+5,High School,Clerical,M,M,1,3,1,2,11.2755308479,45.0
+6,Graduate Degree,Clerical,F,M,1,2,0,2,11.2674596147,36.0
+7,Graduate Degree,Professional,M,S,1,2,0,0,11.833065047,27.0
+8,Bachelors,Skilled Manual,M,M,1,1,0,2,11.0014162743,52.0
+9,Partial College,Clerical,M,M,1,0,1,2,11.2864639152,42.0
+10,Graduate Degree,Skilled Manual,F,S,0,1,0,0,10.8624545587,28.0
+11,High School,Manual,M,S,0,1,0,0,10.4963999473,31.0
+12,Graduate Degree,Professional,M,M,1,2,0,0,11.8160181811,24.0
+13,Partial College,Skilled Manual,M,M,1,1,1,2,11.0149996136,36.0
+14,Bachelors,Clerical,F,M,1,2,2,2,11.268826372,53.0
+15,Partial College,Skilled Manual,F,M,1,2,1,2,10.9232369928,44.0
+16,High School,Skilled Manual,F,M,0,2,1,2,11.0067390634,25.0
+17,Partial College,Skilled Manual,F,S,0,0,0,0,10.9923019987,20.0
+18,Partial College,Clerical,F,M,1,3,0,2,11.3597626304,36.0
+19,High School,Clerical,M,S,0,1,0,0,11.3816657758,21.0
+20,Bachelors,Clerical,F,M,1,2,1,2,11.3548554479,52.0
+21,High School,Skilled Manual,F,S,1,2,0,0,10.8463812662,41.0
+22,Bachelors,Manual,F,M,0,0,0,2,10.4299601219,28.0
+23,Partial College,Management,M,M,1,2,2,2,11.5972022731,36.0
+24,Bachelors,Management,F,M,1,3,0,0,11.5525307196,23.0
+25,Partial High School,Skilled Manual,F,S,0,1,0,0,10.9832567534,29.0
+26,Graduate Degree,Professional,F,S,1,0,0,0,11.7700374991,27.0
+27,Partial College,Management,M,S,0,2,0,0,11.6350988489,23.0
+28,Bachelors,Clerical,F,M,1,2,1,1,11.3015128365,36.0
+29,Partial College,Clerical,F,M,0,3,0,0,11.3637407675,16.0
+30,Bachelors,Clerical,M,S,1,1,0,0,11.3751221033,38.0
+31,Partial College,Skilled Manual,M,M,0,2,1,1,10.9702823233,24.0
+32,Bachelors,Management,F,M,1,1,1,2,11.6261202127,24.0
+33,Graduate Degree,Professional,F,M,1,2,2,2,11.7891319439,55.0
+34,Graduate Degree,Manual,F,S,0,1,0,0,10.241743911,26.0
+35,Bachelors,Skilled Manual,M,M,1,1,1,2,10.9588791387,53.0
+36,Bachelors,Skilled Manual,F,M,1,0,1,2,10.9324460371,32.0
+37,High School,Manual,M,S,0,1,0,0,10.4141531635,29.0
+38,Graduate Degree,Professional,F,S,1,3,0,1,11.7915112917,52.0
+39,Bachelors,Skilled Manual,M,S,0,2,0,0,10.8978498198,31.0
+40,Graduate Degree,Management,M,M,1,1,1,2,11.628367986,27.0
+41,Bachelors,Management,M,M,1,3,0,2,11.6386325776,54.0
+42,Partial College,Skilled Manual,F,S,0,0,0,0,10.9366364481,16.0
+43,Partial College,Manual,M,M,1,1,0,2,10.1969777253,45.0
+44,High School,Manual,F,M,0,0,0,0,10.4928008294,21.0
+45,Partial College,Skilled Manual,F,M,1,2,0,1,10.953697102,34.0
+46,Partial College,Clerical,M,S,1,1,1,1,11.3769109921,60.0
+47,Bachelors,Skilled Manual,F,S,0,1,0,0,10.9045421376,34.0
+48,Partial College,Skilled Manual,M,M,1,1,1,2,11.0063574315,45.0
+49,Partial College,Clerical,M,S,0,3,0,0,11.3365700752,29.0
